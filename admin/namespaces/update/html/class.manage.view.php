@@ -66,11 +66,12 @@
 		
 		public static function update(){
 		
-			echo '<h2>'.Lang::_('Click the button below to update "%name"', 'update', array('name' => WS_NAME)).'</h2>'.
-				 '<input class="button button_publish" type=submit name=update value="'.Lang::_('Update').'" />'.
+			echo '<h2>'.Lang::_('Use the button below to update "%name"', 'update', array('name' => WS_NAME)).'</h2>'.
+				 '<input class="button publish" type=submit name=update value="'.Lang::_('Update').'" />'.
 				 '<p class=indication>'.
 				 	'('.Lang::_('Before update, please backup your website files to prevent any problem', 'update').'. '.Lang::_('A database backup will be made and sent to %email', 'update', array('email' => WS_EMAIL)).')<br/>'.
-				 	'('.Lang::_('Please don\'t leave this page while updating', 'update').'.)'.
+				 	'('.Lang::_('Please don\'t leave this page while updating', 'update').'.)<br/>'.
+				 	'('.Lang::_('Update your plugins first, otherwise they may not work with the new Lynxpress version', 'update').'.)'.
 				 '</p>';
 		
 		}
