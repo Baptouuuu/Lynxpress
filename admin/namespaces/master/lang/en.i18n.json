@@ -84,6 +84,7 @@
 	"Extra":"",
 	"Banner":"",
 	"Modify":"",
+	"Modify Banner":"",
 	"Modify Gallery":"",
 	"Add an album as gallery":"",
 	"Add an image as banner":"",
@@ -105,5 +106,8 @@
 	"Use":"",
 	"Author":"",
 	"Url":"",
-	"Install":""
+	"Install":"",
+	"Really":"",
+	"Invalid request":"",
+	"Save":""
 }

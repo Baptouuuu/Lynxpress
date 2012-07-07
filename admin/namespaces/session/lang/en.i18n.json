@@ -3,5 +3,7 @@
 	"Connection to":"",
 	"Back to":"",
 	"Lost password?":"",
-	"You've been logged out":""
+	"You've been logged out":"",
+	"Invalid username":"",
+	"Invalid password":""
 }
