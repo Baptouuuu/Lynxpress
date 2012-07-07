@@ -92,14 +92,22 @@
 		public static function upload(){
 		
 			echo '<section id="upload_form" data-url="'.Url::_(array('ns' => 'media', 'ctl' => 'ajaxadd'), array('type' => 'upload')).'">'.
-					 '<section id="dropzone">Drop your files here</section>'.
+					 '<section id="dropzone">'.Lang::_('Drop your files here', 'media').'</section>'.
 					 '<label for="file">'.Lang::_('Select files to upload', 'media').':</label>&nbsp;&nbsp;&nbsp;&nbsp;<input id="file" name="file[]" type="file" multiple required />'.
-					 '<input id="upload" class="button button_publish" type="submit" name="upload" value="'.Lang::_('Upload', 'media').'" /><br/>'.
-					 '<span class="indication">('.Lang::_('The maximum upload file size is set to').' '.Media::max_upload().'MB)</span><br/>'.
+					 '<input id="upload" class="button publish" type="submit" name="upload" value="'.Lang::_('Upload', 'media').'" /><br/>'.
+					 '<span class="indication">('.Lang::_('The maximum upload file size is set to', 'media').' '.Media::max_upload().'MB)</span><br/>'.
 					 '<span class="indication">('.Lang::_('If you want to upload a video too large, upload it via ftp and use this %form to register it', 'media', array('form' => '<a href="'.Url::_(array('ns' => 'media', 'ctl' => 'add'), array('type' => 'video')).'">'.Lang::_('form').'</a>')).'</span>'.
 					 '<ul id="files_list">'.
 					 '</ul>'.
-				 '</section>';
+				 '</section>'.
+				 '<script id=tpl_media type="media/template">'.
+				 	'<li id=item_{{id}}>'.
+				 		'<div class=fl_image></div>'.
+				 		'<div class=fl_name>{{name}} ({{size}})</div>'.
+				 		'<div class=fl_progress><div class=progress><div class=bar></div></div></div>'.
+				 		'<div class=fl_link></div>'.
+				 	'</li>'.
+				 '</script>';
 		
 		}
 		
@@ -116,7 +124,7 @@
 			if($part == 'o'){
 			
 				echo '<section id="upload_form">'.
-						 '<input id="media_name" class="input" type="text" name="name" placeholder="'.Lang::_('Title').'" required /><br/>'.
+						 '<input id="media_name" class="input" type="text" name="name" placeholder="'.Lang::_('Title').'" required x-webkit-speech /><br/>'.
 						 '<textarea id="media_desc" class="txta" name="description" placeholder="'.Lang::_('A description of your album', 'media').'"></textarea><br/>'.
 						 '<fieldset id="cats">'.
 						 	'<legend>'.Lang::_('Categories').'</legend>';
@@ -126,7 +134,7 @@
 				echo 	'</fieldset>'.
 						 '<span id="comment"><input id="allow_comment" type="checkbox" name="allow_comment" value="open" /> <label for="allow_comment">'.Lang::_('Allow Comments').'</label></span>'.
 						 '<span id="cover_line"><label for="cover">'.Lang::_('Cover', 'media').':</label> <input id="cover" name="cover" type="file" required /></span><br/>'.
-						 '<input class="submit button button_publish" type="submit" name="create_album" value="'.Lang::_('Create').'" />'.
+						 '<input class="submit button publish" type="submit" name="create_album" value="'.Lang::_('Create').'" />'.
 					 '</ssection>';
 			
 			}
@@ -158,9 +166,9 @@
 		public static function linkage(){
 		
 			echo '<section id="upload_form">'.
-					 '<input id="media_name" class="input" type="text" name="name" placeholder="'.Lang::_('Title').'" required /><br/>'.
+					 '<input id="media_name" class="input" type="text" name="name" placeholder="'.Lang::_('Title').'" required x-webkit-speech /><br/>'.
 					 '<textarea id="media_desc" class="txta" name="embed_code" placeholder="'.Lang::_('Embed code', 'media').'" required></textarea>'.
-					 '<input class="submit button button_publish" type="submit" name="link_alien" value="'.Lang::_('Link').'" />'.
+					 '<input class="submit button publish" type="submit" name="link_alien" value="'.Lang::_('Link').'" />'.
 				 '</section>';
 		
 		}
@@ -178,7 +186,7 @@
 			if($part == 'o'){
 			
 				echo '<section id="upload_form">'.
-						 '<input id="media_name" class="input" type="text" name="name" placeholder="'.Lang::_('Title').'" required /><br/>'.
+						 '<input id="media_name" class="input" type="text" name="name" placeholder="'.Lang::_('Title').'" required x-webkit-speech /><br/>'.
 						 '<fieldset id="cats">'.
 						 	'<legend>'.Lang::_('Mime type', 'media').'</legend>';
 			
@@ -187,7 +195,7 @@
 				echo 	'</fieldset>'.
 						 '<label for="video_url">'.Lang::_('Video url', 'media').':</label> <input id="video_url" class="input" type="text" name="url" placeholder="content/'.date('Y/m/').'" required /><br/>'.
 						 '<span class="indication">('.Lang::_('Upload your video inside content folder to work correctly', 'media').'. '.Lang::_('You should use directory convention too, putting your content inside folder with year and month', 'media').'.)</span><br/>'.
-						 '<input class="submit button button_publish" type="submit" name="register_video" value="'.Lang::_('Register').'" />'.
+						 '<input class="submit button publish" type="submit" name="register_video" value="'.Lang::_('Register').'" />'.
 					 '</section>';
 			
 			}
