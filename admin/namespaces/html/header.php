@@ -2,6 +2,7 @@
 	use \Admin\Master\Helpers\Html as Helper;
 	use \Library\Lang\Lang;
 	use \Library\Url\Url;
+	use \Admin\Plugins\Helpers\Plugins;
 	
 	defined('FOOTPRINT') or die();
 ?>
@@ -20,28 +21,7 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo WS_URL ?>fancybox/jquery.fancybox.css" media="screen" />
 		<link rel="stylesheet" type="text/css" href="<?php echo WS_URL ?>fancybox/helpers/jquery.fancybox-buttons.css?v=2.0.3" />
 		
-		<script type="text/javascript" src="<?php echo WS_URL ?>js/jquery-1.7.2.js"></script>
-		<script type="text/javascript" src="<?php echo WS_URL ?>js/jquery.mousewheel-3.0.6.pack.js"></script>
-		<script type="text/javascript" src="<?php echo WS_URL ?>fancybox/jquery.fancybox.js"></script>
-		<script type="text/javascript" src="<?php echo WS_URL ?>fancybox/helpers/jquery.fancybox-buttons.js?v=2.0.3"></script>
-		
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$("a.fancybox").fancybox({
-					helpers: {
-						title : {
-							type : 'outside'
-						},
-						overlay : {
-							speedIn : 500,
-							opacity : 0.85
-						}
-					}
-				});
-			});
-		</script>
-		
-		<?php Helper::extend_header() ?>
+		<?php Helper::extend_document('css') ?>
 
 	</head>
 
@@ -130,18 +110,18 @@
 					
 					<?php 
 					
-						/*$plugins = Helper::plugins_infos();
+						$plugins = Plugins::get_manifests();
 						
 						if(!empty($plugins)){
 						
 							echo '<ul id="mplg">';
 							
-							foreach($plugins as $plg)
-								echo '<li><a href="index.php?ns='.$plg['namespace'].'&ctl='.$plg['entry_point'].'">'.$plg['name'].'</a></li>';
+							foreach($plugins as $p)
+								echo '<li><a href="'.Url::_(array('ns' => $p->infos->namespace, 'ctl' => $p->infos->entry_point)).'">'.$p->name.'</a></li>';
 							
 							echo '</ul>';
 						
-						}*/
+						}
 					
 					?>
 					
