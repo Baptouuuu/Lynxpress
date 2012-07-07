@@ -71,7 +71,7 @@
 			echo '<h2>'.Lang::_('Official templates library', 'templates').'</h2>'.
 				 '<div id=actions>'.
 					 '<div id=search_box>'.
-					 	'<input id="search_input" class="input" type="text" name="search" list="titles" placeholder="'.Lang::_('Templates').'" />'.
+					 	'<input id="search_input" class="input" type="text" name="search" list="titles" placeholder="'.Lang::_('Templates').'" x-webkit-speech />'.
 					 	'<input class="button" type="submit" name="search_button" value="'.Lang::_('Search').'" />'.
 					 '</div>'.
 				 '</div>';
@@ -103,12 +103,22 @@
 			* @param	integer	[$id]
 			* @param	string	[$name]
 			* @param	string	[$description]
+			* @paral	array	[$images]
 			* @param	integer	[$downloaded]
 		*/
 		
-		public static function tpl($id, $name, $description, $downloaded){
+		public static function tpl($id, $name, $description, $images, $downloaded){
 		
 			echo '<div id=tpl_'.$id.' class=label>'.
+					'<div class=image>'.
+						((!empty($images[0]))?
+							'<a class=fancybox href="'.$images[0].'">'.
+								'<img src="'.$images[0].'" alt="cover" />'.
+							'</a>'
+						:
+							''
+						).
+					'</div>'.
 					'<div class=content>'.
 						'<span class=label>'.Lang::_('Name').':</span> '.$name.'<br/>'.
 						'<span class=label>'.Lang::_('Downloaded', 'templates').':</span> '.$downloaded.'<br/>'.
