@@ -88,7 +88,7 @@
 			if($part == 'o'){
 			
 				echo '<div id="actions">'.
-						'<input class="button delete" type="submit" name="delete" value="'.Lang::_('Delete').'" /> &nbsp;&nbsp;'.
+						'<input class="button delete" type="submit" name="delete" value="'.Lang::_('Delete').'" data-confirm="'.Lang::_('Really').'?" /> &nbsp;&nbsp;'.
 						'<select name="change">'.
 							'<option value="no">'.Lang::_('Change role to', 'users').'...</option>';
 			
@@ -97,7 +97,7 @@
 				echo	'</select> '.
 						'<input class="button" type="submit" name="apply" value="'.Lang::_('Apply').'" />'.
 						'<div id="search_box">'.
-							'<input id="search_input" class="input" type="text" name="search" list="titles" placeholder="'.Lang::_('Users').'" />'.
+							'<input id="search_input" class="input" type="text" name="search" list="titles" placeholder="'.Lang::_('Users').'" x-webkit-speech />'.
 							'<input class="button" type="submit" name="search_button" value="'.Lang::_('Search').'" />'.
 						'</div>'.
 					 '</div>';

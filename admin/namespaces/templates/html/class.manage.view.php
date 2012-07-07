@@ -71,7 +71,7 @@
 		
 			echo '<h2>'.Lang::_('You\'re currently using', 'templates').': "'.$template.'"</h2>'.
 				 '<div id=actions>'.
-				 	'<input class="button delete" type=submit name=delete value="'.Lang::_('Delete').'" /> '.
+				 	'<input class="button delete" type=submit name=delete value="'.Lang::_('Delete').'" data-confirm="'.Lang::_('Really').'?" /> '.
 				 	'<input class=button type=submit name=update value="'.Lang::_('Use').'" />'.
 				 '</div>';
 		

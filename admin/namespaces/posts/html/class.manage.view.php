@@ -70,7 +70,7 @@
 		
 		public static function status($key, $name, $count, $selected = false){
 		
-			echo '<span><a '.(($selected)?'class="selected"':'').' href="'.Url::_(array('ns' => 'posts'), array('status' => $key)).'">'.ucfirst($name).'</a> ('.$count.')</span>';
+			echo '<span><a '.(($selected)?'class="selected"':'').' href="'.Url::_(array('ns' => 'posts'), array('status' => $key)).'">'.Lang::_(ucfirst($name)).'</a> ('.$count.')</span>';
 		
 		}
 		
@@ -96,8 +96,8 @@
 				}else{
 				
 					echo '<input class="button" type="submit" name="restore" value="'.Lang::_('Restore').'" /> '.
-						 '<input class="button delete" type="submit" name="delete" value="'.Lang::_('Delete').'" /> '.
-						 '<input class="button delete" type="submit" name="empty_trash" value="'.Lang::_('Empty Trash').'" />&nbsp;&nbsp;';
+						 '<input class="button delete" type="submit" name="delete" value="'.Lang::_('Delete').'" data-confirm="'.Lang::_('Really').'?" /> '.
+						 '<input class="button delete" type="submit" name="empty_trash" value="'.Lang::_('Empty Trash').'" data-confirm="'.Lang::_('Really').'?" />&nbsp;&nbsp;';
 				
 				}
 						
@@ -115,7 +115,7 @@
 				echo 	'</select> '.
 						'<input class="button" type="submit" name="filter" value="'.Lang::_('Filter').'" />'.
 						'<div id="search_box">'.
-							'<input id="search_input" class="input" type="text" name="search" list="titles" placeholder="'.Lang::_('Posts').'" />'.
+							'<input id="search_input" class="input" type="text" name="search" list="titles" placeholder="'.Lang::_('Posts').'" x-webkit-speech />'.
 							'<input class="button" type="submit" name="search_button" value="'.Lang::_('Search').'" />'.
 						'</div>'.
 						'<input type="hidden" name="status" value="'.$status.'" />'.
@@ -192,7 +192,7 @@
 			$draft = null;
 			
 			if($status == 'draft')
-				$draft = '<span class="draft"> - Draft</span>';
+				$draft = '<span class="draft"> - '.Lang::_('Draft').'</span>';
 			
 			$actions = null;
 			

@@ -111,7 +111,7 @@
 			
 				echo 	'</tbody>'.
 					 '</table>'.
-					 '<input class="button delete" type="submit" name="delete" value="'.Lang::_('Delete').'" />';
+					 '<input class="button delete" type="submit" name="delete" value="'.Lang::_('Delete').'" data-confirm="'.Lang::_('Really').'?" />';
 			
 			}
 		

@@ -69,7 +69,7 @@
 		
 			if($part == 'o'){
 			
-				echo '<input class="button delete" type=submit name=delete value="'.Lang::_('Delete').'" />'.
+				echo '<input class="button delete" type=submit name=delete value="'.Lang::_('Delete').'" data-confirm="'.Lang::_('Really').'?" />'.
 					 '<table id=table>'.
 						'<thead>'.
 							'<tr>'.

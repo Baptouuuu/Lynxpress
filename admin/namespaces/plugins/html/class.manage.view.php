@@ -69,7 +69,7 @@
 		public static function actions(){
 		
 			echo '<div id=actions>'.
-					'<input class="button delete" type="submit" name="delete" value="'.Lang::_('Delete').'" />'.
+					'<input class="button delete" type="submit" name="delete" value="'.Lang::_('Delete').'" data-confirm="'.Lang::_('Really').'?" />'.
 				 '</div>';
 		
 		}

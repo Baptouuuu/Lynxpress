@@ -69,7 +69,7 @@
 			echo '<div id=network_add>'.
 					'<input class=input type=text name=title placeholder="'.Lang::_('Website title', 'network').'" /> '.
 					'<input class=input type=url name=url placeholder="http://lynxpress.org/" /> '.
-					'<input class="button button_publish" type=submit name=create value="'.Lang::_('Add').'" />'.
+					'<input class="button publish" type=submit name=create value="'.Lang::_('Add').'" />'.
 				 '</div>';
 		
 		}
@@ -84,7 +84,7 @@
 		public static function actions(){
 		
 			echo '<div id=actions>'.
-					'<input class="button delete" type=submit name=delete value="'.Lang::_('Delete').'" />'.
+					'<input class="button delete" type=submit name=delete value="'.Lang::_('Delete').'" data-confirm="'.Lang::_('Really').'?" />'.
 				 '</div>';
 		
 		}

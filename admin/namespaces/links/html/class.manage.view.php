@@ -68,7 +68,7 @@
 		public static function actions(){
 		
 			echo '<div id="actions">'.
-					'<input class="button delete" type="submit" name="delete" value="'.Lang::_('Delete').'" /> &nbsp;'.
+					'<input class="button delete" type="submit" name="delete" value="'.Lang::_('Delete').'" data-confirm="'.Lang::_('Really').'?" /> &nbsp;'.
 					'<select name="priority">'.
 						'<option value="no">'.Lang::_('Change priority to', 'links').'...</option>'.
 						'<option value="1">'.Lang::_('Very High', 'links').'</option>'.
@@ -79,7 +79,7 @@
 					'</select>'.
 					'<input class="button" type="submit" name="apply" value="'.Lang::_('Apply').'" />'.
 					'<div id="search_box">'.
-						'<input id="search_input" class="input" type="text" name="search" list="titles" placeholder="'.Lang::_('Links').'" />'.
+						'<input id="search_input" class="input" type="text" name="search" list="titles" placeholder="'.Lang::_('Links').'" x-webkit-speech />'.
 						'<input class="button" type="submit" name="search_button" value="'.Lang::_('Search').'" />'.
 					'</div>'.
 				 '</div>';
@@ -106,7 +106,7 @@
 								'<th class="column_link">'.Lang::_('Link').'</th>'.
 								'<th class="column_rss">'.Lang::_('RSS').'</th>'.
 								'<th class="column_notes">'.Lang::_('Notes', 'links').'</th>'.
-								'<th class="column_priority">'.Lang::_('Priority').'</th>'.
+								'<th class="column_priority">'.Lang::_('Priority', 'links').'</th>'.
 							'</tr>'.
 						'</thead>'.
 						'<tfoot>'.
@@ -116,7 +116,7 @@
 								'<th class="column_link">'.Lang::_('Link').'</th>'.
 								'<th class="column_rss">'.Lang::_('RSS').'</th>'.
 								'<th class="column_notes">'.Lang::_('Notes', 'links').'</th>'.
-								'<th class="column_priority">'.Lang::_('Priority').'</th>'.
+								'<th class="column_priority">'.Lang::_('Priority', 'links').'</th>'.
 							'</tr>'.
 						'</tfoot>'.
 						'<tbody>';

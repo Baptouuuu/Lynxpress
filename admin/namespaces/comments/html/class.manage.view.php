@@ -94,7 +94,7 @@
 				echo	'</select> '.
 						'<input class="button" type="submit" name="apply" value="'.Lang::_('Apply').'" />'.
 						'<div id="search_box">'.
-							'<input id="search_input" class="input" type="text" name="search" list="titles" placeholder="'.Lang::_('Comments').'" />'.
+							'<input id="search_input" class="input" type="text" name="search" list="titles" placeholder="'.Lang::_('Comments').'" x-webkit-speech />'.
 							'<input class="button" type="submit" name="search_button" value="'.Lang::_('Search').'" />'.
 						'</div>'.
 					 '</div>';
@@ -112,7 +112,7 @@
 		
 		public static function empty_spam(){
 		
-			echo '<input class="button delete" type="submit" name="empty_spam" value="'.Lang::_('Empty Spam', 'comments').'" />';
+			echo '<input class="button delete" type="submit" name="empty_spam" value="'.Lang::_('Empty Spam', 'comments').'" data-confirm="'.Lang::_('Really').'?" />';
 		
 		}
 		
@@ -125,7 +125,7 @@
 		
 		public static function empty_trash(){
 		
-			echo '<input class="button delete" type="submit" name="empty_trash" value="'.Lang::_('Empty Trash').'" />';
+			echo '<input class="button delete" type="submit" name="empty_trash" value="'.Lang::_('Empty Trash').'" data-confirm="'.Lang::_('Really').'?" />';
 		
 		}
 		
