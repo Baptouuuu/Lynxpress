@@ -23,6 +23,7 @@
 	*/
 	
 	namespace Admin\Api\Controllers;
+	use \Admin\Master\Interfaces\Controller;
 	
 	defined('FOOTPRINT') or die();
 	
@@ -37,10 +38,8 @@
 		* @final
 	*/
 	
-	final class Check{
+	final class Check extends Master implements Controller{
 	
-		private $_display_html = null;
-		
 		/**
 			* Class constructor
 			*
@@ -49,7 +48,7 @@
 		
 		public function __construct(){
 		
-			$this->_display_html = false;
+			parent::__construct();
 		
 		}
 		
@@ -61,24 +60,9 @@
 		
 		public function display_content(){
 		
+			header('Content-type: application/json; charset=utf-8');
+			
 			echo '{"message":true}';
-		
-		}
-		
-		/**
-			* Function to get attributes from outside the object
-			*
-			* @access	public
-			* @param	string [$attr]
-			* @return	mixed
-		*/
-		
-		public function __get($attr){
-		
-			if(in_array($attr, array('_display_html')))
-				return $this->$attr;
-			else
-				return 'The Lynx is not here!';
 		
 		}
 	
