@@ -243,7 +243,7 @@
 						parent::form('o', 'post', Url::_(array('ns' => 'posts', 'ctl' => 'edit')));
 						
 						echo '<div id="dp_inputs">'.
-							 	'<input id="dp_title" class="input" type="text" name="title" placeholder="'.Lang::_('Title', 'dashboard').'" required /><br/>'.
+							 	'<input id="dp_title" class="input" type="text" name="title" placeholder="'.Lang::_('Title').'" required x-webkit-speech /><br/>'.
 							 	'<textarea id="dp_content" class="txta" name="content" placeholder="'.Lang::_('What do you want to share today?', 'posts').'" required></textarea><br/>'.
 							 	'<input id="dp_tags" class="input" type="text" name="tags" placeholder="'.Lang::_('Tags, separetad with commas', 'posts').'" /><br/>'.
 							 	'<fieldset>'.
@@ -256,7 +256,7 @@
 							 '<div id="dp_actions">'.
 							 	'<input class="button" type="submit" name="save_draft" value="'.Lang::_('Save Draft').'" />&nbsp;'.
 							 	'<input class="button" type="reset" value="'.Lang::_('Reset').'" />'.
-							 	'<input class="button button_publish" type="submit" name="publish" value="'.Lang::_('Publish').'" />'.
+							 	'<input class="button publish" type="submit" name="publish" value="'.Lang::_('Publish').'" />'.
 							 	'<input type="hidden" name="action" value="create" />'.
 							 	'<input type="hidden" name="status" value="publish" />'.
 							 	'<input type="hidden" name="allow_comment" value="open" />'.

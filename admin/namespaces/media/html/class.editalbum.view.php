@@ -73,9 +73,9 @@
 		
 			echo '<div id="actions">'.
 				 	'<input class="button" type="submit" name="save" value="'.Lang::_('Save').'" /> '.
-				 	'<a class="button" href="'.Url::_(array('ns' => 'albums', 'id' => $id), array(), true).'" target=_blank>'.Lang::_('View Album', 'media').'</a> '.
+				 	'<a class="button" href="'.Url::_(array('ns' => 'albums', 'id' => $id), array(), true).'" target=_blank>'.Lang::_('View').'</a> '.
 				 	parent::clear_localstorage().
-				 	'<input class="button button_publish" type="submit" '.(($status == 'draft')?'name="publish" value="'.Lang::_('Publish').'"':'name="unpublish" value="'.Lang::_('Unpublish').'"').' />'.
+				 	'<input class="button publish" type="submit" '.(($status == 'draft')?'name="publish" value="'.Lang::_('Publish').'"':'name="unpublish" value="'.Lang::_('Unpublish').'"').' />'.
 				 '</div>';
 		
 		}
@@ -110,11 +110,12 @@
 				 				'<input id="allow_comment" type="checkbox" name="allow_comment" value="open" '.(($allow_comment == 'open')?'checked':'').' />'.
 				 				'<label for="allow_comment">'.Lang::_('Allow Comments').'</label>'.
 				 			'</span>'.
+				 			'<input id=media_id type=hidden value="'.$id.'">'.
 				 		'</div>'.
 				 	'</div>'.
 				 	'<div id="af_content">'.
-				 		'<input class="input storage" data-storage="media_name_'.$id.'" name="name" value="'.$name.'" placeholder="'.Lang::_('Title').'" required /><br/>'.
-				 		'<textarea class="txta storage" data-storage="media_description_'.$id.'" name="description" placeholder="'.Lang::_('A description of your album', 'media').'">'.$description.'</textarea>'.
+				 		'<input id=ea_name class=input name="name" value="'.$name.'" placeholder="'.Lang::_('Title').'" required x-webkit-speech /><br/>'.
+				 		'<textarea id=ea_desc class=txta name="description" placeholder="'.Lang::_('A description of your album', 'media').'">'.$description.'</textarea>'.
 				 		'<fieldset>'.
 				 			'<legend>'.Lang::_('Categories').'</legend>';
 				 		
@@ -140,7 +141,7 @@
 		public static function pics_actions($id){
 		
 			echo '<div id="pics_actions">'.
-					'<input class="button delete" type="submit" name="delete" value="'.Lang::_('Delete Pictures', 'media').'" /> '.
+					'<input class="button delete" type="submit" name="delete" value="'.Lang::_('Delete Pictures', 'media').'" data-confirm="'.Lang::_('Really').'?" /> '.
 					'<a class="button" href="'.Url::_(array('ns' => 'media', 'ctl' => 'editalbum'), array('id' => $id, 'view' => 'upload')).'">'.Lang::_('Upload Pictures', 'media').'</a>'.
 					' <span class="indication">('.Lang::_('Indication: pictures are ordered with their name', 'media').')</span>'.
 				 '</div>';
@@ -220,13 +221,21 @@
 			echo '<section id="upload_form" data-url="'.Url::_(array('ns' => 'media', 'ctl' => 'ajaxadd'), array('type' => 'upload', 'album' => $id)).'">'.
 					 '<a class="button" href="'.Url::_(array('ns' => 'media', 'ctl' => 'editalbum'), array('id' => $id)).'">'.Lang::_('Go Back').'</a><br/>'.
 					 '<br/>'.
-					 '<section id="dropzone">Drop your files here</section>'.
+					 '<section id="dropzone">'.Lang::_('Drop your files here', 'media').'</section>'.
 					 '<label for="file">'.Lang::_('Select files to upload', 'media').':</label>&nbsp;&nbsp;&nbsp;&nbsp;<input id="file" name="file[]" type="file" multiple required />'.
-					 '<input id="upload" class="button button_publish" type="submit" name="upload" value="'.Lang::_('Upload', 'media').'" /><br/>'.
-					 '<span class="indication">('.Lang::_('The maximum upload file size is set to').' '.Media::max_upload().'MB)</span><br/>'.
+					 '<input id="upload" class="button publish" type="submit" name="upload" value="'.Lang::_('Upload', 'media').'" /><br/>'.
+					 '<span class="indication">('.Lang::_('The maximum upload file size is set to', 'media').' '.Media::max_upload().'MB)</span><br/>'.
 					 '<ul id="files_list">'.
 					 '</ul>'.
-				 '</section>';
+				 '</section>'.
+				 '<script id=tpl_media type="media/template">'.
+				 	'<li id=item_{{id}}>'.
+				 		'<div class=fl_image></div>'.
+				 		'<div class=fl_name>{{name}} ({{size}})</div>'.
+				 		'<div class=fl_progress><div class=progress><div class=bar></div></div></div>'.
+				 		'<div class=fl_link></div>'.
+				 	'</li>'.
+				 '</script>';
 		
 		}
 		
@@ -243,12 +252,12 @@
 		*/
 		
 		public static function edit_picture($id, $name, $permalink, $description, $aid){
-		
-			Edit::image($id, $name, $permalink, $description);
 			
 			echo '<div id="edit_album_pic_goback">'.
-				 	'<a class="button" href="'.Url::_(array('ns' => 'media', 'ctl' => 'editalbum'), array('id' => $aid)).'">'.Lang::_('Go Back to Album', 'media').'</a>'.
+				 	'<a class="button" href="'.Url::_(array('ns' => 'media', 'ctl' => 'editalbum'), array('id' => $aid)).'">'.Lang::_('Go Back').'</a>'.
 				 '</div>';
+			
+			Edit::image($id, $name, $permalink, $description);
 		
 		}
 	

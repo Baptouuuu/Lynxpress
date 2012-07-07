@@ -86,7 +86,7 @@
 				 	'</textarea>'.
 				 	'<div id="actions">'.
 				 		'<a class="button" href="'.Url::_(array('ns' => 'comments')).'">Cancel</a>'.
-				 		'<input class="button button_publish" type="submit" name="create" value="'.Lang::_('Reply').'" />'.
+				 		'<input class="button publish" type="submit" name="create" value="'.Lang::_('Reply').'" />'.
 				 	'</div>'.
 				 '</section>';
 		
@@ -143,7 +143,7 @@
 							'</div>'.
 							'<div id="actions">'.
 								'<a class="button delete" href="'.Url::_(array('ns' => 'comments'), array('status' => 'trash', 'action' => 'update', 'to' => 'trash', 'id' => $id)).'">'.Lang::_('Move to Trash').'</a>'.
-								'<input class="button button_publish" type="submit" name="update" value="'.Lang::_('Update').'" />'.
+								'<input class="button publish" type="submit" name="update" value="'.Lang::_('Update').'" />'.
 							'</div>'.
 						'</div>'.
 					'</div>'.

@@ -68,7 +68,7 @@
 		public static function social_form($networks){
 		
 			echo '<h2>'.Lang::_('Check social networks you want to activate share buttons', 'social').'</h2>'.
-				 '<input class="button button_publish" type="submit" name="update" value="'.Lang::_('Update').'" />'.
+				 '<input class="button publish" type="submit" name="update" value="'.Lang::_('Update').'" />'.
 				 '<section id="social_buttons" class="labels">'.
 				 	'<div class="label mini">'.
 				 		'<label for="google">'.

@@ -92,7 +92,7 @@
 				echo 	'</select>'.
 						'<input class="button" type="submit" name="filter" value="'.Lang::_('Filter').'" />'.
 						'<div id="search_box">'.
-							'<input id="search_input" class="input" type="text" name="search" list="titles" placeholder="'.Lang::_('Album').'" />'.
+							'<input id="search_input" class="input" type="text" name="search" list="titles" placeholder="'.Lang::_('Album').'" x-webkit-speech />'.
 							'<input class="button" type="submit" name="search_button" value="'.Lang::_('Search').'" />'.
 						'</div>'.
 					'</div>';

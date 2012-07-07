@@ -87,7 +87,7 @@
 						'<option value="4" '.(($priority == 4)?'selected':'').'>'.Lang::_('Low', 'links').'</option>'.
 						'<option value="5" '.(($priority == 5)?'selected':'').'>'.Lang::_('Very Low', 'links').'</option>'.
 					'</select><br/>'.
-					'<input class="button button_publish" type=submit name='.$action.' value="'.(($action == 'update')?Lang::_('Update'):Lang::_('Add')).'" />'.
+					'<input class="button publish" type=submit name='.$action.' value="'.(($action == 'update')?Lang::_('Update'):Lang::_('Add')).'" />'.
 				 '</section>';
 		
 		}

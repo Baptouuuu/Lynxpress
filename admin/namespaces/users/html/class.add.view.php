@@ -79,7 +79,7 @@
 				 		'<label for="pwd">'.Lang::_('Password').'</label> <input id="pwd" class="input" type="password" name="pwd" placeholder="'.Lang::_('Password').'" required /><br/>'.
 				 		'<input id="re_pwd" class="input" type="password" name="re_pwd" placeholder="'.Lang::_('Re-type password', 'users').'" required /><br/>'.
 				 		'<label for="send_pwd">'.Lang::_('Send password', 'users').'?</label> <span id="send"><span><input id="send_pwd" type="radio" name="send_pwd" value="yes" checked /><label for="send_pwd">'.Lang::_('Yes').'</label></span><span><input id="not_send_pwd" type="radio" name="send_pwd" value="no" /><label for="not_send_pwd">'.Lang::_('No').'</label></span></span><br/>'.
-				 		'<label for="role">'.Lang::_('Role').'<label> <select id="role" name="role">';
+				 		'<label for="role">'.Lang::_('Role').'</label> <select id="role" name="role">';
 				 		
 				 		if(!empty($roles))
 				 			foreach($roles as $key => $r)
@@ -87,7 +87,7 @@
 				 		
 			echo 		'</select>'.
 				 	'</div>'.
-				 	'<input class="button button_publish" type="submit" name="create" value="'.Lang::_('Add').'" />'.
+				 	'<input class="button publish" type="submit" name="create" value="'.Lang::_('Add').'" />'.
 				 '</section>';
 		
 		}

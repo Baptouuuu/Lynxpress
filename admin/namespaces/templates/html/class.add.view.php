@@ -71,7 +71,7 @@
 		
 			echo '<h2>'.Lang::_('Add a template to your website', 'templates').'</h2>'.
 				 '<div id=upload_form>'.
-				 	Lang::_('Upload a template archive', 'templates').': <input type=file name=template /> <input class="button button_publish" type=submit name=create value="'.Lang::_('Upload', 'media').'" /><br/>'.
+				 	Lang::_('Upload a template archive', 'templates').': <input type=file name=template /> <input class="button publish" type=submit name=create value="'.Lang::_('Upload', 'media').'" /><br/>'.
 				 	'<span class=indication>'.Lang::_('The maximum upload file size is set to', 'media').' '.Media::max_upload().'MB</span>'.
 				 '</div>';
 		

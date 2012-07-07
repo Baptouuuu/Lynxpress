@@ -59,7 +59,7 @@
 				 		'<h2>'.Lang::_('Reset Password', 'users').'</h2>'.
 				 		$action_msg.
 				 		'<input class="input" type="email" name="email" placeholder="'.Lang::_('E-mail').'" required /><br/>'.
-				 		'<input class="button" type="submit" name="update" value="'.Lang::_('Send Password', 'users').'" />'.
+				 		'<input class="button" type="submit" name="update" value="'.Lang::_('Send password', 'users').'" />'.
 				 	'</div>'.
 				 	'<div class="rf_box">'.
 				 		'<a href="'.Url::_(array('ns' => 'session', 'ctl' => 'login')).'">'.Lang::_('Connection', 'session').'</a>'.

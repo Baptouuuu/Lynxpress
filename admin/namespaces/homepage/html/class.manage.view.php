@@ -136,7 +136,7 @@
 				 		
 			echo 	'</select>'.
 				 '</div>'.
-				 '<input class="button button_publish" type="submit" name="update" value="'.Lang::_('Update').'" />';
+				 '<input class="button publish" type="submit" name="update" value="'.Lang::_('Update').'" />';
 		
 		}
 	

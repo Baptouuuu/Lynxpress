@@ -71,7 +71,7 @@
 			echo '<h2>'.Lang::_('Official plugins library', 'plugins').'</h2>'.
 				 '<div id=actions>'.
 					 '<div id=search_box>'.
-					 	'<input id="search_input" class="input" type="text" name="search" list="titles" placeholder="'.Lang::_('Plugins').'" />'.
+					 	'<input id="search_input" class="input" type="text" name="search" list="titles" placeholder="'.Lang::_('Plugins').'" x-webkit-speech />'.
 					 	'<input class="button" type="submit" name="search_button" value="'.Lang::_('Search').'" />'.
 					 '</div>'.
 				 '</div>';

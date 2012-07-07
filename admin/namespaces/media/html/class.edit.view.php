@@ -77,7 +77,7 @@
 			$fname = basename($permalink);
 			
 			echo '<section id="edit_image" class="edit_media">'.
-					'<input id="em_name" class="input storage" data-storage="media_name_'.$id.'" type="text" name="name" value="'.$name.'" placeholder="'.Lang::_('Title').'" required />'.
+					'<input id="em_name" class=input type="text" name="name" value="'.$name.'" placeholder="'.Lang::_('Title').'" required x-webkit-speech />'.
 					'<div id="em_media">'.
 						'<a class="fancybox" href="'.WS_URL.$permalink.'">'.
 							'<img src="'.WS_URL.$dir.'1000-'.$fname.'" alt="'.$fname.'" /><br/>'.
@@ -96,14 +96,15 @@
 							'</select>'.
 						'</div>'.
 					'</div>'.
-					'<textarea id="em_desc" class="txta storage" data-storage="media_description_'.$id.'" name="description" placeholder="'.Lang::_('A description of your image', 'media').'">'.$description.'</textarea><br/>'.
+					'<textarea id="em_desc" class=txta name="description" placeholder="'.Lang::_('A description of your image', 'media').'">'.$description.'</textarea><br/>'.
 					'<p>'.Lang::_('Image urls', 'media').':</p>'.
 					'<input class="input url" type="text" value="'.$permalink.'" readonly /> <span class="indication">('.Lang::_('full size', 'media').')</span><br/>'.
 					'<input class="input url" type="text" value="'.$dir.'150-'.$fname.'" readonly /> <span class="indication">('.Lang::_('image with %width pixels width', 'media', array('width' => 150)).')</span><br/>'.
 					'<input class="input url" type="text" value="'.$dir.'300-'.$fname.'" readonly /> <span class="indication">('.Lang::_('image with %width pixels width', 'media', array('width' => 300)).')</span><br/>'.
 					'<input class="input url" type="text" value="'.$dir.'1000-'.$fname.'" readonly /> <span class="indication">('.Lang::_('image with %width pixels width', 'media', array('width' => 1000)).')</span><br/>'.
-					'<input class="button button_publish" type="submit" name="update_image" value="'.Lang::_('Update').'" /> '.
+					'<input class="button publish" type="submit" name="update_image" value="'.Lang::_('Update').'" /> '.
 					parent::clear_localstorage().
+					'<input id=media_id type=hidden value="'.$id.'">'.
 				 '</section>';
 		
 		}
@@ -133,13 +134,13 @@
 			$categories = explode(',', $category);
 			
 			echo '<section id="edit_video" class="edit_media">'.
-					'<input id="em_name" class="input storage" data-storage="media_name_'.$id.'" type="text" name="name" value="'.$name.'" placeholder="'.Lang::_('Title').'" required />'.
+					'<input id="em_name" class=input type="text" name="name" value="'.$name.'" placeholder="'.Lang::_('Title').'" required x-webkit-speech />'.
 					'<div id="em_media">'.
 						'<video width="640" src="'.WS_URL.$permalink.'" controls preload="metadata">'.
 							((!empty($fallback))?$fallback->_embed_code:'').
 						'</video>'.
 					'</div>'.
-					'<textarea id="em_desc" class="txta storage" data-storage="media_description_'.$id.'" name="description" placeholder="'.Lang::_('A description of your video', 'media').'">'.$description.'</textarea><br/>'.
+					'<textarea id="em_desc" class=txta name="description" placeholder="'.Lang::_('A description of your video', 'media').'">'.$description.'</textarea><br/>'.
 					'<fieldset id="cats">'.
 						'<legend>'.Lang::_('Categories').'</legend>';
 			
@@ -161,8 +162,9 @@
 						Lang::_('Video url', 'media').': '.
 						'<input class="input url" type="text" value="'.$permalink.'" readonly />'.
 					'</p>'.
-					'<input class="button button_publish" type="submit" name="update_video" value="'.Lang::_('Update').'" /> '.
+					'<input class="button publish" type="submit" name="update_video" value="'.Lang::_('Update').'" /> '.
 					parent::clear_localstorage().
+					'<input id=media_id type=hidden value="'.$id.'">'.
 				 '</section>';
 		
 		}
@@ -197,16 +199,17 @@
 		public static function alien($id, $name, $description, $embed_code){
 		
 			echo '<section id="edit_alien" class="edit_media">'.
-					'<input id="em_name" class="input storage" data-storage="media_name_'.$id.'" type="text" name="name" value="'.$name.'" placeholder="'.Lang::_('Title').'" required />'.
+					'<input id="em_name" class=input type="text" name="name" value="'.$name.'" placeholder="'.Lang::_('Title').'" required x-webkit-speech />'.
 					'<div id="em_media">'.
 						'<div id="emm_embed">'.
 							$embed_code.
 						'</div>'.
 					'</div>'.
 					'<textarea id="em_desc" class="txta storage" data-storage="media_description_'.$id.'" name="description" placeholder="'.Lang::_('A description of your video', 'media').'">'.$description.'</textarea><br/>'.
-					'<textarea id="em_embed" class="txta storage" data-storage="media_embed_code_'.$id.'" name="embed_code" placeholder="'.Lang::_('Embed code', 'media').'" required>'.$embed_code.'</textarea><br/>'.
-					'<input class="button button_publish" type="submit" name="update_alien" value="'.Lang::_('Update').'" /> '.
+					'<textarea id="em_embed" class=txta name="embed_code" placeholder="'.Lang::_('Embed code', 'media').'" required>'.$embed_code.'</textarea><br/>'.
+					'<input class="button publish" type="submit" name="update_alien" value="'.Lang::_('Update').'" /> '.
 					parent::clear_localstorage().
+					'<input id=media_id type=hidden value="'.$id.'">'.
 				 '</section>';
 		
 		}

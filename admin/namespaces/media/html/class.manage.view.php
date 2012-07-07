@@ -90,7 +90,7 @@
 			if($part == 'o'){
 			
 				echo '<div id="actions">'.
-						'<input class="button delete" type="submit" name="delete" value="'.Lang::_('Delete').'" />&nbsp;&nbsp;'.
+						'<input class="button delete" type="submit" name="delete" value="'.Lang::_('Delete').'" data-confirm="'.Lang::_('Really').'?" />&nbsp;&nbsp;'.
 						'<select name="date">'.
 							'<option value="all">'.Lang::_('Dates').'...</option>';
 			
@@ -105,7 +105,7 @@
 				echo 	'</select> '.
 						'<input class="button" type="submit" name="filter" value="'.Lang::_('Filter').'" />'.
 						'<div id="search_box">'.
-							'<input id="search_input" class="input" type="text" name="search" list="titles" placeholder="'.Lang::_('Media').'" />'.
+							'<input id="search_input" class="input" type="text" name="search" list="titles" placeholder="'.Lang::_('Media').'" x-webkit-speech />'.
 							'<input class="button" type="submit" name="search_button" value="'.Lang::_('Search').'" />'.
 						'</div>'.
 						'<input type="hidden" name="type" value="'.$type.'" />'.

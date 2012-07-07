@@ -101,13 +101,12 @@
 					'</div>'.
 					'<h2>'.Lang::_('Privacy', 'users').'</h2>'.
 					'<div class="block">'.
-						'<label for="bio">'.Lang::_('Biography', 'users').'</label> <textarea id="bio" class="txta storage" data-storage="user_bio_'.$id.'" name="bio" placeholder="'.Lang::_('Share a bit about yourself', 'users').'">'.$bio.'</textarea><br/>'.
+						'<label for="bio">'.Lang::_('Biography', 'users').'</label> <textarea id="bio" class=txta name="bio" placeholder="'.Lang::_('Share a bit about yourself', 'users').'">'.$bio.'</textarea><br/>'.
 						'<label for="old_pwd">'.Lang::_('Old Password', 'users').'</label> <input id="old_pwd" class="input" type="password" name="old_pwd" placeholder="'.Lang::_('Old Password', 'users').'" /><br/>'.
 						'<label for="pwd">'.Lang::_('New Password', 'users').'</label> <input id="pwd" class="input" type="password" name="pwd" placeholder="'.Lang::_('New Password', 'users').'" /><br/>'.
 						'<input id="re_pwd" class="input" type="password" name="re_pwd" placeholder="'.Lang::_('Re-type new password', 'users').'" /><br/>'.
 					'</div>'.
-					'<input class="button button_publish" type="submit" name="update" value="'.Lang::_('Update').'" /> '.
-					parent::clear_localstorage().
+					'<input class="button publish" type="submit" name="update" value="'.Lang::_('Update').'" /> '.
 				 '</section>';
 		
 		}
