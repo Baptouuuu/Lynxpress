@@ -28,6 +28,7 @@
 	use Exception;
 	use \Admin\Activity\Helpers\Activity;
 	use \Library\Lang\Lang;
+	use \Library\Database\Backup;
 	
 	defined('FOOTPRINT') or die();
 	
@@ -66,6 +67,8 @@
 		
 			try{
 			
+				$this->make_backup();
+				
 				$this->get_zip();
 				
 				$this->install();
@@ -75,6 +78,26 @@
 				$this->_error = $e->getMessage();
 			
 			}
+		
+		}
+		
+		/**
+			* Make a backup of the database before any action
+			*
+			* @access	private
+		*/
+		
+		private function make_backup(){
+		
+			$bk = new Backup();
+			$bk->save('backup/dump-'.date('Y-m-d-H:i:s').'.sql');
+			
+			$html = new File();
+			$html->_content = '<!--The Lynx is not here!-->';
+			$html->save('backup/index.html');
+			
+			$mail = new Mail(WS_EMAIL, 'Databse dump made before update at '.date('Y-m-d H:i:s'), $bk->_sql);
+			$mail->send();
 		
 		}
 		
