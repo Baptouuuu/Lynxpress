@@ -167,6 +167,20 @@
 			return $i18n->translate();
 		
 		}
+		
+		/**
+			* Return the lang attribute
+			*
+			* @static
+			* @access	public
+			* @return	string
+		*/
+		
+		public static function get_lang(){
+		
+			return self::$_lang;
+		
+		}
 	
 	}
 
