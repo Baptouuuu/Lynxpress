@@ -71,7 +71,7 @@
 		
 			echo '<h2>'.Lang::_('Add a plugin to your website', 'plugins').'</h2>'.
 				 '<div id=upload_form>'.
-				 	Lang::_('Upload a plugin archive', 'templates').': <input type=file name=plugin /> <input class="button button_publish" type=submit name=create value="'.Lang::_('Upload', 'media').'" /><br/>'.
+				 	Lang::_('Upload a plugin archive', 'plugins').': <input type=file name=plugin /> <input class="button publish" type=submit name=create value="'.Lang::_('Upload', 'media').'" /><br/>'.
 				 	'<span class=indication>'.Lang::_('The maximum upload file size is set to', 'media').' '.Media::max_upload().'MB</span>'.
 				 '</div>';
 		
