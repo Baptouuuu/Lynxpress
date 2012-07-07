@@ -33,6 +33,7 @@
 	use \Library\Model\User;
 	use \Library\Model\Session as MSession;
 	use \Library\Url\Url;
+	use \Library\Lang\Lang;
 	
 	defined('FOOTPRINT') or die();
 	
@@ -81,7 +82,7 @@
 		public function login(){
 		
 			$to_read['table'] = 'user';
-			$to_read['columns'] = array('_id', '_username', '_password');
+			$to_read['columns'] = array('_id', '_username', '_password', '_active');
 			$to_read['condition_columns'][':u'] = '_username';
 			$to_read['condition_select_types'][':u'] = '=';
 			$to_read['condition_values'][':u'] = VPost::username();
@@ -89,9 +90,9 @@
 			
 			$user = $this->_db->read($to_read, Database::FETCH_CLASS, '\\Library\\Model\\User');
 			
-			if(empty($user) || $user === false){
+			if(empty($user) || $user === false || $user[0]->_active == 0){
 			
-				throw new Exception('Invalid username');
+				throw new Exception(Lang::_('Invalid username', 'session'));
 			
 			}else{
 			
@@ -131,7 +132,7 @@
 				
 				}else{
 				
-					throw new Exception('Invalid password');
+					throw new Exception(Lang::_('Invalid password', 'session'));
 				
 				}
 			
@@ -168,15 +169,14 @@
 		public function verify(){
 		
 			if(VSession::token()){
-				error_log(json_encode(VSession::all()));	
+					
 				try{
 				
 					$session = new MSession(VSession::token(), '_token');
 					
 					//session lifetime set to one hour
 					if($session->_date < date('Y-m-d H:i:s', (time()-3600)) || $session->_ip != $this->check_ip()){
-					error_log('session expired');
-					error_log(json_encode(array('session_ip' => $session->_ip, 'current_ip' => $this->check_ip())));
+					
 						$session->delete();
 						
 						session_destroy();
@@ -192,7 +192,7 @@
 					}
 				
 				}catch(Exception $e){
-				error_log($e->getMessage());
+				
 					session_destroy();
 					header('Location: '.Url::_(array('ns' => 'session', 'ctl' => 'login'), array('loggedout' => 'true')));
 					exit;
@@ -200,7 +200,7 @@
 				}
 		
 			}else{
-			error_log('no token in session');
+			
 				session_destroy();
 				header('Location: '.Url::_(array('ns' => 'session', 'ctl' => 'login')));
 				exit;
