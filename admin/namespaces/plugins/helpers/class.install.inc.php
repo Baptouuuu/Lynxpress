@@ -30,6 +30,7 @@
 	use \Library\Model\Setting;
 	use \Library\Curl\Curl;
 	use \Admin\Activity\Helpers\Activity;
+	use \Library\File\Folder;
 	
 	defined('FOOTPRINT') or die();
 	
@@ -157,15 +158,32 @@
 			}
 			//end search
 			
-			$manifest = json_decode(File::read($tmp.'manifest.json')->_content);
+			try{
 			
-			if(!isset($manifest->name) && !isset($manifest->author) && !isset($manifest->url) && !isset($manifest->infos) && !isset($manifest->infos->namespace) && !isset($manifest->infos->compatibility) && !isset($manifest->infos->entry_point) && !isset($manifest->admin) && !isset($manifest->admin->core) && !isset($manifest->admin->css) && !isset($manifest->admin->js) && !isset($manifest->site) && !isset($manifest->site->core) && !isset($manifest->site->css) && !isset($manifest->site->js) && !isset($manifest->images) && !isset($manifest->install) && !isset($manifest->uninstall))
+				$manifest = json_decode(File::read($tmp.'manifest.json')->_content);
+			
+			}catch(Exception $e){
+			
+				$this->clean();
+				throw new Exception($e->getMessage());
+			
+			}
+			
+			if(!isset($manifest->name) && !isset($manifest->author) && !isset($manifest->url) && !isset($manifest->infos) && !isset($manifest->infos->namespace) && !isset($manifest->infos->compatibility) && !isset($manifest->infos->entry_point) && !isset($manifest->admin) && !isset($manifest->admin->core) && !isset($manifest->admin->css) && !isset($manifest->admin->js) && !isset($manifest->site) && !isset($manifest->site->core) && !isset($manifest->site->css) && !isset($manifest->site->js) && !isset($manifest->images) && !isset($manifest->install) && !isset($manifest->uninstall)){
+			
+				$this->clean();
 				throw new Exception(Lang::_('Plugin manifest invalid', 'plugins'));
+			
+			}
 			
 			$ns = $manifest->infos->namespace;
 			
-			if(is_dir('namespaces/'.$ns) || is_dir(PATH.'namespaces/'.$ns) || is_dir(PATH.'css/admin/'.$ns) || is_dir(PATH.'css/site/'.$ns) || is_dir(PATH.'js/admin/'.$ns) || is_dir(PATH.'js/site/'.$ns) || is_dir(PATH.'images/'.$ns))
+			if(is_dir('namespaces/'.$ns) || is_dir(PATH.'namespaces/'.$ns) || is_dir(PATH.'css/admin/'.$ns) || is_dir(PATH.'css/site/'.$ns) || is_dir(PATH.'js/admin/'.$ns) || is_dir(PATH.'js/site/'.$ns) || is_dir(PATH.'images/'.$ns)){
+			
+				$this->clean();
 				throw new Exception(Lang::_('Another plugin use the same namespace', 'plugins'));
+			
+			}
 			
 			//check that all files are readable
 			foreach($manifest->admin->core as $f)
@@ -277,7 +295,23 @@
 			
 			$plg->create();
 			
+			$this->clean();
+			
 			Activity::log('added the plugin "'.$plg->_name.'"');
+		
+		}
+		
+		/**
+			* Clean the temp directory
+			*
+			* @access	private
+			* @param	string	[$dir]
+		*/
+		
+		private function clean(){
+		
+			$folder = new Folder('tmp/');
+			$folder->delete(true);
 		
 		}
 		
