@@ -30,6 +30,7 @@
 	use \Library\Model\Setting;
 	use \Library\Curl\Curl;
 	use \Admin\Activity\Helpers\Activity;
+	use \Library\File\Folder;
 	
 	defined('FOOTPRINT') or die();
 	
@@ -157,16 +158,37 @@
 			}
 			//end search
 			
-			$manifest = json_decode(File::read($tmp.'manifest.json')->_content, true); 
+			try{
 			
-			if(!isset($manifest['name']) && !isset($manifest['author']) && !isset($manifest['url']) && !isset($manifest['infos']) && !isset($manifest['infos']['namespace']) && !isset($manifest['infos']['compatibility']) && !isset($manifest['files']) && !isset($manifest['files']['core']))
+				$manifest = json_decode(File::read($tmp.'manifest.json')->_content, true);
+			
+			}catch(Exception $e){
+			
+				$this->clean();
+				throw new Exception($e->getMessage());
+			
+			} 
+			
+			if(!isset($manifest['name']) && !isset($manifest['author']) && !isset($manifest['url']) && !isset($manifest['infos']) && !isset($manifest['infos']['namespace']) && !isset($manifest['infos']['compatibility']) && !isset($manifest['files']) && !isset($manifest['files']['core'])){
+			
+				$this->clean();
 				throw new Exception(Lang::_('Template manifest invalid', 'templates'));
 			
-			if(is_dir(PATH.'templates/'.$manifest['infos']['namespace']))
+			}
+			
+			if(is_dir(PATH.'templates/'.$manifest['infos']['namespace'])){
+			
+				$this->clean();
 				throw new Exception(Lang::_('Template already exist', 'templates'));
 			
-			if(!in_array(WS_VERSION, $manifest['infos']['compatibility']))
+			}
+			
+			if(!in_array(WS_VERSION, $manifest['infos']['compatibility'])){
+			
+				$this->clean();
 				throw new Exception(Lang::_('Template not compatible with your Lynxpress version', 'templates'));
+			
+			}
 			
 			//check if all files of the manifest exist in the archive
 			if(isset($manifest['files']['css']))
@@ -214,7 +236,23 @@
 			$setting->_key = 'template_'.$manifest['infos']['namespace'];
 			$setting->create();
 			
+			$this->clean();
+			
 			Activity::log('added the template "'.$setting->_name.'"');
+		
+		}
+		
+		/**
+			* Clean the temp directory
+			*
+			* @access	private
+			* @param	string	[$dir]
+		*/
+		
+		private function clean(){
+		
+			$folder = new Folder('tmp/');
+			$folder->delete(true);
 		
 		}
 		
