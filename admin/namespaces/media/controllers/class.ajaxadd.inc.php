@@ -191,7 +191,7 @@
 							'path' => (((substr($media->_type, 0, 5) == 'image'))?WS_URL.$media->_permalink:WS_URL.'images/thumb_video.png'),
 							'thumb150' => ((substr($media->_type, 0, 5) == 'image')?WS_URL.$path.'150-'.$name:''),
 							'thumb300' => ((substr($media->_type, 0, 5) == 'image')?WS_URL.$path.'300-'.$name:''),
-							'thumb100' => ((substr($media->_type, 0, 5) == 'image')?WS_URL.$path.'1000-'.$name:''),
+							'thumb1000' => ((substr($media->_type, 0, 5) == 'image')?WS_URL.$path.'1000-'.$name:''),
 							'edit_url' => ((VGet::album() && $this->_user->_permissions->album)?Url::_(array('ns' => 'media', 'ctl' => 'editalbum'), array('id' => VGet::album(), 'view' => 'picture', 'pid' => $media->_id)):Url::_(array('ns' => 'media', 'ctl' => 'edit'), array('id' => $media->_id))),
 							'edit_word' => Lang::_('Edit')
 						);
