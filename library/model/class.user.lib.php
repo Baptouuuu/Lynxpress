@@ -84,6 +84,7 @@
 		private $_google = null;
 		private $_bio = null;
 		private $_role = null;
+		private $_active = null;
 		
 		/**
 			* Class constructor
@@ -138,6 +139,7 @@
 				$this->read('_google');
 				$this->read('_bio');
 				$this->read('_role');
+				$this->read('_active');
 			
 			}catch(Exception $e){
 			
@@ -174,6 +176,7 @@
 				$this->_google = parent::get_from_column('_google', $this->$attr, $attr, $type);
 				$this->_bio = parent::get_from_column('_bio', $this->$attr, $attr, $type);
 				$this->_role = parent::get_from_column('_role', $this->$attr, $attr, $type);
+				$this->_active = parent::get_from_column('_active', $this->$attr, $attr, $type);
 			
 			}catch(Exception $e){
 			
