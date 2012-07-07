@@ -5,9 +5,9 @@
 # http://www.sequelpro.com/
 # http://code.google.com/p/sequel-pro/
 #
-# Host: localhost (MySQL 5.5.9)
+# Host: localhost (MySQL 5.5.20)
 # Database: lynxpress
-# Generation Time: 2012-05-24 07:29:58 +0000
+# Generation Time: 2012-07-07 17:36:06 +0000
 # ************************************************************
 
 
@@ -47,6 +47,17 @@ CREATE TABLE `dev_category` (
   PRIMARY KEY (`_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `dev_category` WRITE;
+/*!40000 ALTER TABLE `dev_category` DISABLE KEYS */;
+
+INSERT INTO `dev_category` (`_id`, `_name`, `_type`)
+VALUES
+	(2,'Uncategorized','album'),
+	(3,'Uncategorized','post'),
+	(4,'Uncategorized','video');
+
+/*!40000 ALTER TABLE `dev_category` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table dev_comment
@@ -175,7 +186,11 @@ LOCK TABLES `dev_setting` WRITE;
 
 INSERT INTO `dev_setting` (`_id`, `_name`, `_type`, `_data`, `_key`)
 VALUES
-	(1,'admin','role','{\"dashboard\":true,\"post\":true,\"media\":true,\"album\":true,\"comment\":true,\"setting\":true,\"delete\":true}','role_admin');
+	(1,'admin','role','{\"dashboard\":true,\"post\":true,\"media\":true,\"album\":true,\"comment\":true,\"setting\":true,\"delete\":true}','role_admin'),
+	(4,'Homepage','homepage','{\"type\":\"post\",\"view\":\"all\"}','homepage'),
+	(12,'Main Template','template','{\"name\": \"Main Template\",	\"author\": \"Baptiste Langlade\",\"url\": \"http://lynxpress.org\",\"infos\": {\"namespace\": \"main\",\"date\": \"2012-05-08\",\"compatibility\": [\"2.0\"]},\"files\": {\"js\": [],	\"css\": [],\"core\": []}}','template_main'),
+	(13,'Main template','current_template','main','current_template'),
+	(14,'Social Buttons','social_buttons','[]','social_buttons');
 
 /*!40000 ALTER TABLE `dev_setting` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -202,15 +217,16 @@ CREATE TABLE `dev_user` (
   `_google` tinytext,
   `_bio` text,
   `_role` varchar(20) NOT NULL DEFAULT '',
+  `_active` int(1) NOT NULL DEFAULT '1' COMMENT 'set to 0 when a user is deleted',
   PRIMARY KEY (`_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `dev_user` WRITE;
 /*!40000 ALTER TABLE `dev_user` DISABLE KEYS */;
 
-INSERT INTO `dev_user` (`_id`, `_username`, `_nickname`, `_firstname`, `_lastname`, `_publicname`, `_password`, `_email`, `_website`, `_msn`, `_twitter`, `_facebook`, `_google`, `_bio`, `_role`)
+INSERT INTO `dev_user` (`_id`, `_username`, `_nickname`, `_firstname`, `_lastname`, `_publicname`, `_password`, `_email`, `_website`, `_msn`, `_twitter`, `_facebook`, `_google`, `_bio`, `_role`, `_active`)
 VALUES
-	(1,'Admin',NULL,NULL,NULL,'Admin','ee8cffb8358e97d8c1d70242897748b9','admin@admin.fr',NULL,NULL,NULL,NULL,NULL,NULL,'admin');
+	(1,'Admin',NULL,NULL,NULL,'Admin','ee8cffb8358e97d8c1d70242897748b9','admin@admin.fr',NULL,NULL,NULL,NULL,NULL,NULL,'admin',1);
 
 /*!40000 ALTER TABLE `dev_user` ENABLE KEYS */;
 UNLOCK TABLES;
