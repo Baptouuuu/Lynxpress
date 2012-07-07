@@ -1,0 +1,8 @@
+{
+	"Use the button below to update \"%name\"":"Utilisez le bouton ci-dessous pour mettre à jour \"%name\"",
+	"Before update, please backup your website files to prevent any problem":"Avant la mise à jour, veuillez faire une sauvegarde des fichiers de votre site pour éviter tout problèmes",
+	"A database backup will be made and sent to %email":"Une sauvegarde de la base de données sera faite et envoyer à %email",
+	"Please don't leave this page while updating":"Veuillez ne pas quitter cette page lors de la mise à jour",
+	"Invalid manifest":"Manifest invalide",
+	"Update your plugins first, otherwise they may not work with the new Lynxpress version":"Mettez à jour vos plugins en premier, ils pourraient ne plus fonctionner avec la nouvelle version de Lynxpress"
+}

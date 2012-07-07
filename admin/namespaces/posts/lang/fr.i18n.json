@@ -1,0 +1,13 @@
+{
+	"No post to display":"Aucun post à afficher",
+	"Your post goes here":"Votre article vient ici",
+	"Tags, separetad with commas":"Tags, séparés par des virgules",
+	"Missing title":"Titre manquant",
+	"Title has to contain at least one word bigger than 2 characters":"Le titre doit contenir au moins un mot de plus de 2 caractères",
+	"Missing content":"Article manquant",
+	"Invalid content":"Article invalide",
+	"Missing at least one category":"Au moins une catégorie est nécessaire",
+	"Invalid tags":"Tags invalides",
+	"Generated permalink already used, please change your title!":"Le permalien généré est déjà utilisé, veuillez changer votre titre",
+	"What do you want to share today?":"Que vous voulez partager aujourd'hui?"
+}
