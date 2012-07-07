@@ -245,7 +245,7 @@
 				switch($this->_mime){
 				
 					case 'image/gif':
-						$result = @imagegif($dest, $dirname.$name, 100);
+						$result = @imagegif($dest, $dirname.$name);
 						break;
 					
 					case 'image/jpeg':
@@ -253,7 +253,7 @@
 						break;
 					
 					case 'image/png':
-						$result = @imagepng($dest, $dirname.$name, 100);
+						$result = @imagepng($dest, $dirname.$name, 0);
 						break;
 				
 				}
@@ -303,7 +303,7 @@
 				switch($this->_mime){
 				
 					case 'image/gif':
-						$result = @imagegif($src, $this->_file, 100);
+						$result = @imagegif($src, $this->_file);
 						break;
 					
 					case 'image/jpeg':
@@ -311,7 +311,7 @@
 						break;
 					
 					case 'image/png':
-						$result = @imagepng($src, $this->_file, 100);
+						$result = @imagepng($src, $this->_file, 0);
 						break;
 				
 				}
@@ -374,7 +374,7 @@
 				switch($this->_mime){
 				
 					case 'image/gif':
-						$result = @imagegif($dest, $this->_file, 100);
+						$result = @imagegif($dest, $this->_file);
 						break;
 					
 					case 'image/jpeg':
@@ -382,7 +382,7 @@
 						break;
 					
 					case 'image/png':
-						$result = @imagepng($dest, $this->_file, 100);
+						$result = @imagepng($dest, $this->_file, 0);
 						break;
 				
 				}
