@@ -35,8 +35,6 @@
 		
 		\Library\Loader\Loader::load();
 		
-		//\Admin\Error\Helpers\Error::register();
-		
 		$controller = '\\Admin\\'.ucfirst(VGet::ns('dashboard')).'\\Controllers\\'.ucfirst(VGet::ctl('manage'));
 		
 		$page = new $controller();
@@ -51,8 +49,7 @@
 	
 	}catch(Exception $e){
 	
-		echo $e->getMessage();
-		//header('Location: index.php?ns=error&ctl=manage&message='.urlencode($e->getMessage()));
+		echo '<h1>'.$e->getMessage().'</h1>';
 	
 	}
 
