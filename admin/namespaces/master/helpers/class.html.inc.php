@@ -110,14 +110,15 @@
 			*
 			* @static
 			* @access	public
-			* @param	string [$type] Can be set to 'js' or 'css'
-			* @param	string [$data] Link or code you want to add to html header
-			* @param	boolean [$src] If set to true it's a link, otherwise $data is considered as plain text
+			* @param	string	[$type] Can be set to 'js' or 'css'
+			* @param	string	[$data] Link or code you want to add to html header
+			* @param	boolean	[$src] If set to true it's a link, otherwise $data is considered as plain text
+			* @param	string	[$extra] For css it will be the media attribute, and for the js it will be the loading method ('async' or 'defer')
 		*/
 		
-		public static function add_header_link($type, $data, $src = true){
+		public static function add_header_link($type, $data, $src = true, $extra = ''){
 		
-			self::$_header_links[$type][] = array('data' => $data, 'src' => $src);
+			self::$_header_links[$type][] = array('data' => $data, 'src' => $src, 'extra' => $extra);
 		
 		}
 		
@@ -126,25 +127,32 @@
 			*
 			* @static
 			* @access	public
+			* @param	string	[$type] Type to display
 		*/
 		
-		public static function extend_header(){
+		public static function extend_document($type){
 		
-			foreach(self::$_header_links['css'] as $css){
+			if($type == 'css'){
 			
-				if($css['src'] == true)
-					echo '<link rel="stylesheet" type="text/css" href="'.$css['data'].'">';
-				else
-					echo '<style>'.$css['data'].'</style>';
+				foreach(self::$_header_links['css'] as $css){
+				
+					if($css['src'] == true)
+						echo '<link rel="stylesheet" type="text/css" href="'.$css['data'].'" '.((!empty($css['extra']))?'media="'.$css['extra'].'"':'').'>';
+					else
+						echo '<style>'.$css['data'].'</style>';
+				
+				}
 			
-			}
-			
-			foreach(self::$_header_links['js'] as $js){
-			
-				if($js['src'] == true)
-					echo '<script src="'.$js['data'].'" type="text/javascript"></script>';
-				else
-					echo '<script type="text/javascript">'.$js['data'].'</script>';
+			}elseif($type == 'js'){
+				
+				foreach(self::$_header_links['js'] as $js){
+				
+					if($js['src'] == true)
+						echo '<script src="'.$js['data'].'" type="text/javascript" '.((!empty($js['extra']))?$js['extra']:'').'></script>';
+					else
+						echo '<script type="text/javascript">'.$js['data'].'</script>';
+				
+				}
 			
 			}
 		
