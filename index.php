@@ -24,6 +24,7 @@
 	
 	define('PATH', '');
 	define('SIDE', 'site');
+	define('FOOTPRINT', true);
 	
 	try{
 	
