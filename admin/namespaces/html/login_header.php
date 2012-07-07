@@ -15,6 +15,9 @@
 		<link rel="index" href="<?php echo WS_URL ?>" title="<?php echo WS_NAME ?>" />
 		<link rel="icon" type="image/png" href="<?php echo WS_URL ?>images/lynxpress-mini.png" />
 		<link rel="stylesheet" type="text/css" href="<?php echo WS_URL ?>css/admin/main.css" />
+		
+		<script type="text/javascript" src="<?php echo WS_URL ?>js/jquery-1.7.2.js"></script>
+		<script type="text/javascript" src="<?php echo WS_URL ?>js/admin/core/viewModel.messages.js"></script>
 	
 	</head>
 	
