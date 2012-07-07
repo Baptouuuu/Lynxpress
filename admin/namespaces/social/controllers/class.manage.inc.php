@@ -179,7 +179,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::updated($result);
+				$this->_action_msg .= ActionMessages::updated($result);
 			
 			}
 		

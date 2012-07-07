@@ -69,8 +69,7 @@
 			
 			if($this->_user->_permissions->setting){
 			
-				Helper::add_header_link('js', WS_URL.'js/admin/core/profile.js');
-				Helper::add_header_link('js', WS_URL.'js/admin/core/localStorage.js');
+				Helper::add_header_link('js', WS_URL.'js/admin/core/viewModel.profile.js');
 				
 				$this->get_profile();
 				$this->get_roles();
@@ -99,7 +98,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 				
 				$this->_profile = new User();
 			
@@ -122,7 +121,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 			
 			}
 		
@@ -289,7 +288,7 @@
 			
 			if(!empty($errors)){
 			
-				$this->_action_msg = ActionMessages::errors($errors);
+				$this->_action_msg .= ActionMessages::errors($errors);
 				return false;
 			
 			}else{
@@ -338,7 +337,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::updated($result);
+				$this->_action_msg .= ActionMessages::updated($result);
 			
 			}
 		
@@ -365,13 +364,13 @@
 				
 				}catch(Exception $e){
 				
-					$this->_action_msg = ActionMessages::deleted($e->getMessage());
+					$this->_action_msg .= ActionMessages::deleted($e->getMessage());
 				
 				}
 			
 			}elseif(VPost::delete() && !$this->_user->_permissions->delete){
 			
-				$this->_action_msg = ActionMessages::action_no_perm();
+				$this->_action_msg .= ActionMessages::action_no_perm();
 			
 			}
 		

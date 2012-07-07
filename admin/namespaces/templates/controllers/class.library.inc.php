@@ -102,7 +102,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 			
 			}
 		
@@ -138,6 +138,7 @@
 						$t->_id,
 						$t->_name,
 						$t->_description,
+						json_decode($t->_images, true),
 						$t->_downloaded
 					);
 			elseif(isset($this->_templates->message))
@@ -229,7 +230,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::created($result);
+				$this->_action_msg .= ActionMessages::created($result);
 			
 			}
 		

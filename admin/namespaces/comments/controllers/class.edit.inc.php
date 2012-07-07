@@ -92,7 +92,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 				
 				$this->_comment = new Comment();
 			
@@ -226,7 +226,7 @@
 				
 				}catch(Exception $e){
 				
-					$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+					$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 				
 				}
 			
@@ -264,7 +264,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::updated($result);
+				$this->_action_msg .= ActionMessages::updated($result);
 			
 			}
 		

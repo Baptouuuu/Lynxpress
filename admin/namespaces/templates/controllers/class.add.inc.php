@@ -136,7 +136,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::created($result);
+				$this->_action_msg .= ActionMessages::created($result);
 			
 			}
 		

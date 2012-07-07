@@ -64,7 +64,7 @@
 			$this->_footer = 'namespaces/html/login_footer.php';
 			
 			if(VGet::loggedout())
-				$this->_action_msg = ActionMessages::custom_good(Lang::_('You\'ve been logged out', 'session'));
+				$this->_action_msg .= ActionMessages::custom_good(Lang::_('You\'ve been logged out', 'session'));
 			
 			try{
 			
@@ -75,7 +75,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 			
 			}
 		

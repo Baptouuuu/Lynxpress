@@ -84,7 +84,8 @@
 				else
 					$this->_type = 'image';
 				
-				Helper::add_header_link('js', WS_URL.'js/admin/core/table.js');
+				Helper::add_header_link('js', WS_URL.'js/admin/core/viewModel.table.js');
+				Helper::add_header_link('js', WS_URL.'js/admin/core/viewModel.button_confirm.js');
 				
 				$this->delete();
 				
@@ -193,7 +194,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 			
 			}
 		
@@ -220,7 +221,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 			
 			}
 		
@@ -258,7 +259,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 			
 			}
 		
@@ -291,7 +292,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 			
 			}
 		
@@ -478,7 +479,6 @@
 					if(!HMedia::delete(PATH.$m->_permalink))
 						throw new Exception(Lang::_('File "%file" not deleted', 'master', array('file' => $m->_permalink)));
 					
-					$this->delete_comments($m->_id);
 					$m->delete();
 					
 					Activity::log('deleted the file "'.$m->_name.'"');
@@ -491,7 +491,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::deleted($result);
+				$this->_action_msg .= ActionMessages::deleted($result);
 			
 			}elseif(VPost::delete(false) && VPost::media_id() && $this->_user->_permissions->media){
 			
@@ -507,7 +507,6 @@
 						if(!HMedia::delete(PATH.$m->_permalink))
 							throw new Exception(Lang::_('File "%file" not deleted', 'master', array('file' => $m->_permalink)));
 						
-						$this->delete_comments($m->_id);
 						$m->delete();
 						
 						Activity::log('deleted the file "'.$m->_name.'"');
@@ -522,26 +521,13 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::deleted($result);
+				$this->_action_msg .= ActionMessages::deleted($result);
 			
 			}elseif(((VGet::action() == 'delete' && VGet::id()) || (VPost::delete(false) && VPost::media_id())) && !$this->_user->_permissions->delete){
 			
-				$this->_action_msg = ActionMessages::action_no_perm();
+				$this->_action_msg .= ActionMessages::action_no_perm();
 			
 			}
-		
-		}
-		
-		/**
-			* Delete comments related to a media
-			*
-			* @access	private
-			* @param	int [$id] Post id
-		*/
-		
-		private function delete_comments($id){
-		
-			$this->_db->query('DELETE FROM `'.DB_PREFIX.'comment` WHERE _rel_id = '.$id.' AND _rel_type = "media"');
 		
 		}
 	

@@ -75,8 +75,6 @@
 			$this->_title = Lang::_('Editing Album', 'media');
 			
 			if($this->_user->_permissions->album){
-			
-				Helper::add_header_link('js', WS_URL.'js/admin/core/localStorage.js');
 				
 				if(VGet::view() && in_array(VGet::view(), array('album', 'picture', 'upload')))
 					$this->_view = VGet::view();
@@ -91,18 +89,28 @@
 				
 				if($this->_view == 'album'){
 				
-					Helper::add_header_link('js', WS_URL.'js/admin/core/labels.js');
+					Helper::add_header_link('js', WS_URL.'js/admin/core/viewModel.labels.js');
+					Helper::add_header_link('js', WS_URL.'js/admin/core/viewModel.button_confirm.js');
+					Helper::add_header_link('js', WS_URL.'js/admin/core/app.localStorage.js');
+					Helper::add_header_link('js', WS_URL.'js/admin/core/model.media.js');
+					Helper::add_header_link('js', WS_URL.'js/admin/core/viewModel.media.editalbum.js');
 				
 					$this->get_pictures();
 					$this->get_categories();
 				
 				}elseif($this->_view == 'picture'){
 				
+					Helper::add_header_link('js', WS_URL.'js/admin/core/app.localStorage.js');
+					Helper::add_header_link('js', WS_URL.'js/admin/core/model.media.js');
+					Helper::add_header_link('js', WS_URL.'js/admin/core/viewModel.media.edit.js');
+					
 					$this->get_picture();
 				
 				}elseif($this->_view == 'upload'){
 				
-					Helper::add_header_link('js', WS_URL.'js/admin/core/add.media.js');
+					Helper::add_header_link('js', WS_URL.'js/admin/core/app.server.js');
+					Helper::add_header_link('js', WS_URL.'js/admin/core/view.media.add.js');
+					Helper::add_header_link('js', WS_URL.'js/admin/core/viewModel.media.add.js');
 				
 				}
 			
@@ -131,7 +139,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 				
 				$this->_album = new Media();
 			
@@ -171,7 +179,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 			
 			}
 		
@@ -191,7 +199,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 			
 			}
 		
@@ -211,7 +219,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 			
 			}
 		
@@ -424,7 +432,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::created($result);
+				$this->_action_msg .= ActionMessages::created($result);
 			
 			}
 		
@@ -476,7 +484,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::updated($result);
+				$this->_action_msg .= ActionMessages::updated($result);
 			
 			}elseif(VPost::update_image()){
 			
@@ -546,7 +554,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::updated($result);
+				$this->_action_msg .= ActionMessages::updated($result);
 			
 			}elseif(VPost::publish()){
 			
@@ -563,7 +571,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::updated($result);
+				$this->_action_msg .= ActionMessages::updated($result);
 			
 			}
 			elseif(VPost::unpublish()){
@@ -581,7 +589,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::updated($result);
+				$this->_action_msg .= ActionMessages::updated($result);
 			
 			}
 		
@@ -622,11 +630,11 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::deleted($result);
+				$this->_action_msg .= ActionMessages::deleted($result);
 			
 			}elseif(VPost::delete() && VPost::picture_id() && !$this->_user->_permissions->delete){
 			
-				$this->_action_msg = ActionMessages::action_no_perm();
+				$this->_action_msg .= ActionMessages::action_no_perm();
 			
 			}
 		

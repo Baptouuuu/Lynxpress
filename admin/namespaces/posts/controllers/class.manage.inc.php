@@ -40,6 +40,7 @@
 	use \Library\Model\Post;
 	use \Admin\Activity\Helpers\Activity;
 	use \Library\Url\Url;
+	use \Admin\Comments\Helpers\Comments;
 	
 	defined('FOOTPRINT') or die();
 	
@@ -81,7 +82,8 @@
 			
 			if($this->_user->_permissions->post){
 			
-				Helper::add_header_link('js', WS_URL.'js/admin/core/table.js');
+				Helper::add_header_link('js', WS_URL.'js/admin/core/viewModel.table.js');
+				Helper::add_header_link('js', WS_URL.'js/admin/core/viewModel.button_confirm.js');
 				
 				if(VRequest::status(false) && !VPost::empty_trash(false))
 					$this->_status = VRequest::status();
@@ -279,7 +281,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 			
 			}
 		
@@ -306,7 +308,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 			
 			}
 		
@@ -339,7 +341,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 			
 			}
 		
@@ -375,7 +377,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 			
 			}
 		
@@ -422,7 +424,8 @@
 				if($this->_status == $status)
 					$selected = true;
 				
-				Html::status($status, $status, $count, $selected);
+				//tweak for status traduction
+				Html::status($status, (($status == 'publish')?'published':$status), $count, $selected);
 			
 			}
 			
@@ -582,7 +585,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::trashed($result);
+				$this->_action_msg .= ActionMessages::trashed($result);
 			
 			}elseif(VGet::action() == 'untrash' && VGet::id()){
 			
@@ -604,7 +607,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::restored($result);
+				$this->_action_msg .= ActionMessages::restored($result);
 			
 			}elseif(VPost::trash() && VPost::post_id()){
 			
@@ -630,7 +633,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::trashed($result);
+				$this->_action_msg .= ActionMessages::trashed($result);
 			
 			}elseif(VPost::restore() && VPost::post_id()){
 			
@@ -656,7 +659,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::restored($result);
+				$this->_action_msg .= ActionMessages::restored($result);
 			
 			}
 		
@@ -678,9 +681,9 @@
 					$post->_id = VGet::id();
 					$post->read('_title');
 					
-					$this->delete_comments($post->_id);
-					
 					$post->delete();
+					
+					Comments::delete_for($post->_id, 'post');
 					
 					Activity::log('deleted the post "'.$post->_title.'"');
 					
@@ -692,7 +695,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::deleted($result);
+				$this->_action_msg .= ActionMessages::deleted($result);
 			
 			}elseif(VPost::delete() && VPost::post_id() && $this->_user->_permissions->delete){
 			
@@ -704,9 +707,9 @@
 						$p->_id = $id;
 						$p->read('_title');
 						
-						$this->delete_comments($p->_id);
-						
 						$p->delete();
+						
+						Comments::delete_for($p->_id, 'post');
 						
 						Activity::log('deleted the post "'.$p->_title.'"');
 					
@@ -720,7 +723,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::deleted($result);
+				$this->_action_msg .= ActionMessages::deleted($result);
 			
 			}elseif(VPost::empty_trash() && $this->_user->_permissions->delete){
 			
@@ -738,8 +741,9 @@
 					if(!empty($posts))
 						foreach($posts as $p){
 						
-							$this->delete_comments($p->_id);
 							$p->delete();
+							
+							Comments::delete_for($p->_id, 'post');
 							
 							Activity::log('deleted the post "'.$p->_title.'"');
 						
@@ -753,26 +757,13 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::deleted($result);
+				$this->_action_msg .= ActionMessages::deleted($result);
 			
 			}elseif((VGet::action() == 'delete' || VPost::delete() || VPost::empty_trash()) && !$this->_user->_permissions->delete){
 			
-				$this->_action_msg = ActionMessages::action_no_perm();
+				$this->_action_msg .= ActionMessages::action_no_perm();
 			
 			}
-		
-		}
-		
-		/**
-			* Delete comments related to a post
-			*
-			* @access	private
-			* @param	int [$id] Post id
-		*/
-		
-		private function delete_comments($id){
-		
-			$this->_db->query('DELETE FROM `'.DB_PREFIX.'comment` WHERE _rel_id = '.$id.' AND _rel_type = "post"');
 		
 		}
 	

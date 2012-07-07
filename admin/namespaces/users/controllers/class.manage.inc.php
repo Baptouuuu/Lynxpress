@@ -76,7 +76,8 @@
 			
 			if($this->_user->_permissions->setting){
 			
-				Helper::add_header_link('js', WS_URL.'js/admin/core/labels.js');
+				Helper::add_header_link('js', WS_URL.'js/admin/core/viewModel.labels.js');
+				Helper::add_header_link('js', WS_URL.'js/admin/core/viewModel.button_confirm.js');
 				
 				$roles = new Roles();
 				$this->_roles = $roles->_roles;
@@ -140,6 +141,12 @@
 				
 				}
 				
+				$to_read['condition_types'][':a'] = 'AND';
+				$to_read['condition_columns'][':a'] = '_active';
+				$to_read['condition_select_types'][':a'] = '=';
+				$to_read['condition_values'][':a'] = 1;
+				$to_read['value_types'][':a'] = 'int';
+				
 				//pass $to_read by parameter to have same conditions
 				$this->get_pagination($to_read);
 				
@@ -149,7 +156,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 			
 			}
 		
@@ -167,13 +174,17 @@
 			
 				$to_read['table'] = 'user';
 				$to_read['columns'] = array('_role', 'count(_role) as count');
+				$to_read['condition_columns'][':a'] = '_active';
+				$to_read['condition_select_types'][':a'] = '=';
+				$to_read['condition_values'][':a'] = 1;
+				$to_read['value_types'][':a'] = 'int';
 				$to_read['groupby'] = '_role';
 				
 				$this->_user_roles = $this->_db->read($to_read);
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 			
 			}
 		
@@ -200,7 +211,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 			
 			}
 		
@@ -365,7 +376,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::updated($result);
+				$this->_action_msg .= ActionMessages::updated($result);
 			
 			}
 		
@@ -387,8 +398,8 @@
 					
 						$u = new User();
 						$u->_id = $id;
-						$u->read('_username');
-						$u->delete();
+						$u->_active = 0;
+						$u->update('_active');
 						
 						Activity::log('deleted the user "'.$u->_username.'"');
 					
@@ -402,11 +413,11 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::deleted($result);
+				$this->_action_msg .= ActionMessages::deleted($result);
 			
 			}elseif(VPost::delete() && !$this->_user->_permissions->delete){
 			
-				$this->_action_msg = ActionMessages::action_no_perm();
+				$this->_action_msg .= ActionMessages::action_no_perm();
 			
 			}
 		

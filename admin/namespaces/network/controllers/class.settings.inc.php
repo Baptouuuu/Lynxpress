@@ -63,7 +63,8 @@
 			
 			$this->_title = Lang::_('Settings');
 			
-			Helper::add_header_link('js', WS_URL.'js/admin/core/labels.js');
+			Helper::add_header_link('js', WS_URL.'js/admin/core/viewModel.labels.js');
+			Helper::add_header_link('js', WS_URL.'js/admin/core/viewModel.button_confirm.js');
 			
 			$this->get_setting();
 			
@@ -206,7 +207,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::created($result);
+				$this->_action_msg .= ActionMessages::created($result);
 			
 			}
 		
@@ -247,7 +248,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::deleted($result);
+				$this->_action_msg .= ActionMessages::deleted($result);
 			
 			}
 		

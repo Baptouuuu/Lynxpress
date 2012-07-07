@@ -76,8 +76,13 @@
 				else
 					$this->_type = 'upload';
 				
-				if($this->_type == 'upload')
-					Helper::add_header_link('js', WS_URL.'js/admin/core/add.media.js');
+				if($this->_type == 'upload'){
+				
+					Helper::add_header_link('js', WS_URL.'js/admin/core/app.server.js');
+					Helper::add_header_link('js', WS_URL.'js/admin/core/view.media.add.js');
+					Helper::add_header_link('js', WS_URL.'js/admin/core/viewModel.media.add.js');
+				
+				}
 				
 				$this->get_categories();
 				
@@ -290,7 +295,7 @@
 				
 				}catch(Exception $e){
 				
-					$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+					$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 				
 				}
 			
@@ -329,7 +334,7 @@
 				
 				}catch(Exception $e){
 				
-					$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+					$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 				
 				}
 			
@@ -359,7 +364,7 @@
 				
 				}catch(Exception $e){
 				
-					$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+					$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 				
 				}
 			
@@ -391,7 +396,7 @@
 				
 				}catch(Exception $e){
 				
-					$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+					$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 				
 				}
 			

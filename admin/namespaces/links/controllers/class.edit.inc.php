@@ -97,7 +97,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 				
 				$this->_link = new Link();
 			
@@ -212,7 +212,7 @@
 			
 			if(!empty($errors)){
 			
-				$this->_action_msg = ActionMessages::errors($errors);
+				$this->_action_msg .= ActionMessages::errors($errors);
 				return false;
 			
 			}else{
@@ -248,7 +248,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::created($result);
+				$this->_action_msg .= ActionMessages::created($result);
 			
 			}
 		
@@ -282,7 +282,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::updated($result);
+				$this->_action_msg .= ActionMessages::updated($result);
 			
 			}
 		

@@ -80,8 +80,10 @@
 			
 			if($this->_user->_permissions->post){
 			
-				Helper::add_header_link('js', WS_URL.'js/admin/core/posts.js');
-				Helper::add_header_link('js', WS_URL.'js/admin/core/localStorage.js');
+				Helper::add_header_link('js', WS_URL.'js/admin/core/app.localStorage.js');
+				Helper::add_header_link('js', WS_URL.'js/admin/core/model.post.js');
+				Helper::add_header_link('js', WS_URL.'js/admin/core/view.posts.edit.js');
+				Helper::add_header_link('js', WS_URL.'js/admin/core/viewModel.posts.edit.js');
 				
 				$this->get_post();
 				$this->get_categories();
@@ -122,7 +124,7 @@
 				
 				}catch(Exception $e){
 				
-					$this->_action_msg = ActionMessages::custom_wrong($e->getMessage);
+					$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage);
 					
 					$this->_post = new Post();
 					$this->_action = 'create';
@@ -185,7 +187,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 			
 			}
 		
@@ -225,7 +227,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 			
 			}
 		
@@ -255,7 +257,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 			
 			}
 		
@@ -336,9 +338,7 @@
 				$this->_post->_content,
 				$this->_post->_permalink,
 				$display_permalink,
-				$this->_post->_status,
-				$this->_pictures,
-				$this->_videos
+				$this->_post->_status
 			);
 			
 			$categories = explode(',', $this->_post->_category);
@@ -371,14 +371,24 @@
 			
 			}
 			
-			Html::extra(
-				$this->_albums,
-				$this->_pictures,
+			Html::extra();
+			
+			Html::popups(
 				$gallery,
 				$banner
 			);
 			
 			Html::post_wrapper('c');
+			
+			Html::media_datalists(
+				$this->_pictures,
+				$this->_videos,
+				$this->_albums,
+				$banner,
+				$gallery
+			);
+			
+			Html::media_templates();
 		
 		}
 		
@@ -446,7 +456,7 @@
 			
 			if(!empty($errors)){
 			
-				$this->_action_msg = ActionMessages::errors($errors);
+				$this->_action_msg .= ActionMessages::errors($errors);
 				return false;
 			
 			}else{
@@ -501,17 +511,10 @@
 					
 					$extra = array();
 					
-					if(VPost::banner() || VPost::gallery()){
+					$extra['banner'] = VPost::banner();
+					$extra['gallery'] = VPost::gallery();
 					
-						if(VPost::banner())
-							$extra['banner'] = VPost::banner();
-						
-						if(VPost::gallery())
-							$extra['gallery'] = VPost::gallery();
-						
-						$this->_post->_extra = json_encode($extra);
-					
-					}
+					$this->_post->_extra = json_encode($extra);
 					
 					$this->_post->create();
 					
@@ -530,7 +533,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::created($result);
+				$this->_action_msg .= ActionMessages::created($result);
 			
 			}
 		
@@ -570,22 +573,12 @@
 					
 					$extra = $this->_post->_extra;
 					
-					if(VPost::banner() || VPost::gallery()){
+					$extra->banner = VPost::banner();
+					$extra->gallery = VPost::gallery();
 					
-						if(empty($extra))
-							$extra = new stdClass();
-						
-						if(VPost::banner())
-							$extra->banner = VPost::banner();
-						
-						if(VPost::gallery())
-							$extra->gallery = VPost::gallery();
-						
-						$this->_post->_extra = json_encode($extra);
-						$this->_post->update('_extra');
-						$this->_post->_extra = json_decode($this->_post->_extra);
-					
-					}
+					$this->_post->_extra = json_encode($extra);
+					$this->_post->update('_extra');
+					$this->_post->_extra = json_decode($this->_post->_extra);
 					
 					$this->_post->update('_title');
 					$this->_post->update('_content');
@@ -607,7 +600,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::updated($result);
+				$this->_action_msg .= ActionMessages::updated($result);
 			
 			}
 		

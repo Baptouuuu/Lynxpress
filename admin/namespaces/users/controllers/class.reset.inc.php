@@ -133,7 +133,7 @@
 				
 				}catch(Exception $e){
 				
-					$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+					$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 				
 				}
 			

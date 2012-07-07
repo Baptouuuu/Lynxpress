@@ -70,7 +70,9 @@
 			
 			if($this->_user->_permissions->media){
 			
-				Helper::add_header_link('js', WS_URL.'js/admin/core/localStorage.js');
+				Helper::add_header_link('js', WS_URL.'js/admin/core/app.localStorage.js');
+				Helper::add_header_link('js', WS_URL.'js/admin/core/model.media.js');
+				Helper::add_header_link('js', WS_URL.'js/admin/core/viewModel.media.edit.js');
 				
 				$this->get_media();
 				
@@ -121,7 +123,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 				
 				$this->_media = new Media();
 			
@@ -302,7 +304,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::updated($result);
+				$this->_action_msg .= ActionMessages::updated($result);
 			
 			}elseif(VPost::update_video(false)){
 			
@@ -341,7 +343,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::updated($result);
+				$this->_action_msg .= ActionMessages::updated($result);
 			
 			}elseif(VPost::update_alien(false)){
 			
@@ -365,7 +367,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::updated($result);
+				$this->_action_msg .= ActionMessages::updated($result);
 			
 			}
 		

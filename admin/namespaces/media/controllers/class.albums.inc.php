@@ -40,6 +40,7 @@
 	use \Library\Media\Media as HMedia;
 	use \Admin\Activity\Helpers\Activity;
 	use \Library\Url\Url;
+	use \Admin\Comments\Helpers\Comments;
 	
 	defined('FOOTPRINT') or die();
 	
@@ -77,7 +78,7 @@
 			
 			if($this->_user->_permissions->album){
 			
-				Helper::add_header_link('js', WS_URL.'js/admin/core/labels.js');
+				Helper::add_header_link('js', WS_URL.'js/admin/core/viewModel.labels.js');
 			
 				$this->update();
 				$this->delete();
@@ -168,7 +169,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 			
 			}
 		
@@ -195,7 +196,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 			
 			}
 		
@@ -228,7 +229,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 			
 			}
 		
@@ -407,7 +408,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::updated($result);
+				$this->_action_msg .= ActionMessages::updated($result);
 			
 			}
 		
@@ -458,7 +459,7 @@
 						$album->delete();
 						@rmdir(PATH.$album->_permalink);
 						
-						$this->_db->query('DELETE FROM `'.DB_PREFIX.'comment` WHERE _rel_id = '.$aid.' AND _rel_type = "media"');
+						Comments::delete_for($album->_id, 'media');
 						
 						Activity::log('deleted the album "'.$album->_name.'"');
 					
@@ -472,11 +473,11 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::deleted($result);
+				$this->_action_msg .= ActionMessages::deleted($result);
 			
 			}elseif(VPost::apply() && VPost::action() == 'delete' && VPost::album_id() && !$this->_user->_permissions->delete){
 			
-				$this->_action_msg = ActionMessages::action_no_perm();
+				$this->_action_msg .= ActionMessages::action_no_perm();
 			
 			}
 		

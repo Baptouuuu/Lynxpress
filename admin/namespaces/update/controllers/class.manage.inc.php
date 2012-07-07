@@ -81,11 +81,11 @@
 			
 				$available = Update::check();
 				
-				$this->_action_msg = ActionMessages::update_available($available);
+				$this->_action_msg .= ActionMessages::update_available($available);
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 			
 			}
 		
@@ -160,7 +160,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::updated($result);
+				$this->_action_msg .= ActionMessages::updated($result);
 			
 			}
 		

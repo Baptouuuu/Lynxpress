@@ -77,7 +77,8 @@
 			
 			if($this->_user->_permissions->comment){
 			
-				Helper::add_header_link('js', WS_URL.'js/admin/core/table.js');
+				Helper::add_header_link('js', WS_URL.'js/admin/core/viewModel.table.js');
+				Helper::add_header_link('js', WS_URL.'js/admin/core/viewModel.button_confirm.js');
 				
 				if(in_array(VGet::status(), array('pending', 'approved', 'spam', 'trash')))
 					$this->_status = VGet::status();
@@ -193,7 +194,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 			
 			}
 		
@@ -220,7 +221,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 			
 			}
 		
@@ -254,7 +255,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 			
 			}
 		
@@ -466,7 +467,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::updated($result);
+				$this->_action_msg .= ActionMessages::updated($result);
 			
 			}elseif(VGet::action() == 'update' && in_array(VGet::to(), array('pending', 'approved', 'spam', 'trash')) && VGet::id()){
 			
@@ -488,7 +489,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::updated($result);
+				$this->_action_msg .= ActionMessages::updated($result);
 			
 			}
 		
@@ -525,7 +526,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::deleted($result);
+				$this->_action_msg .= ActionMessages::deleted($result);
 			
 			}elseif(VGet::action() == 'delete' && VGet::id() && $this->_user->_permissions->delete){
 			
@@ -546,7 +547,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::deleted($result);
+				$this->_action_msg .= ActionMessages::deleted($result);
 			
 			}elseif(VPost::empty_spam() && $this->_user->_permissions->delete){
 			
@@ -578,7 +579,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::deleted($result);
+				$this->_action_msg .= ActionMessages::deleted($result);
 			
 			}elseif(VPost::empty_trash() && $this->_user->_permissions->delete){
 			
@@ -610,11 +611,11 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::deleted($result);
+				$this->_action_msg .= ActionMessages::deleted($result);
 			
 			}elseif(((VPost::apply() && VPost::action() == 'delete') || (VGet::action() == 'delete' && VGet::id()) || VPost::empty_spam() || VPost::empty_trash()) && !$this->_user->_permissions->delete){
 			
-				$this->_action_msg = ActionMessages::action_no_perm();
+				$this->_action_msg .= ActionMessages::action_no_perm();
 			
 			}
 		

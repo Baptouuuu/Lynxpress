@@ -63,8 +63,7 @@
 			
 			$this->_title = Lang::_('Profile');
 			
-			Helper::add_header_link('js', WS_URL.'js/admin/core/profile.js');
-			Helper::add_header_link('js', WS_URL.'js/admin/core/localStorage.js');
+			Helper::add_header_link('js', WS_URL.'js/admin/core/viewModel.profile.js');
 			
 			$this->get_profile();
 			
@@ -86,7 +85,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 				
 				$this->_profile = new User();
 			
@@ -237,7 +236,7 @@
 			
 			if(!empty($errors)){
 			
-				$this->_action_msg = ActionMessages::errors($errors);
+				$this->_action_msg .= ActionMessages::errors($errors);
 				return false;
 			
 			}else{
@@ -283,7 +282,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::updated($result);
+				$this->_action_msg .= ActionMessages::updated($result);
 			
 			}
 		

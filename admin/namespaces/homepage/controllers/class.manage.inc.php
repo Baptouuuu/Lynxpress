@@ -68,7 +68,7 @@
 			
 			if($this->_user->_permissions->setting){
 			
-				Helper::add_header_link('js', WS_URL.'js/admin/core/homepage.js');
+				Helper::add_header_link('js', WS_URL.'js/admin/core/viewModel.homepage.js');
 			
 				$this->get_setting();
 				$this->get_posts();
@@ -132,7 +132,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 			
 			}
 		
@@ -160,7 +160,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 			
 			}
 		
@@ -188,7 +188,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 			
 			}
 		
@@ -282,7 +282,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::updated($result);
+				$this->_action_msg .= ActionMessages::updated($result);
 			
 			}
 		

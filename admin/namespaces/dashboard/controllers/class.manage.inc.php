@@ -69,7 +69,7 @@
 			
 			if($this->_user->_permissions->dashboard){
 			
-				Helper::add_header_link('js', WS_URL.'js/admin/core/dashboard.js');
+				Helper::add_header_link('js', WS_URL.'js/admin/core/viewModel.dashboard.js');
 				
 				$this->get_activity();
 				$this->get_comments();
@@ -114,7 +114,7 @@
 				
 				}catch(Exception $e){
 				
-					$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+					$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 				
 				}
 			
@@ -174,7 +174,7 @@
 				
 				}catch(Exception $e){
 				
-					$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+					$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 				
 				}
 			
@@ -207,7 +207,7 @@
 				
 				}catch(Exception $e){
 				
-					$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+					$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 				
 				}
 			
@@ -240,11 +240,11 @@
 				$available = Update::check();
 				
 				if($available === true)
-					$this->_action_msg = ActionMessages::update_available(true, true);
+					$this->_action_msg .= ActionMessages::update_available(true, true);
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 			
 			}
 		

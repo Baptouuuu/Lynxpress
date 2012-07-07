@@ -68,7 +68,8 @@
 			
 			if($this->_user->_permissions->setting){
 			
-				Helper::add_header_link('js', WS_URL.'js/admin/core/table.js');
+				Helper::add_header_link('js', WS_URL.'js/admin/core/viewModel.table.js');
+				Helper::add_header_link('js', WS_URL.'js/admin/core/viewModel.button_confirm.js');
 			
 				$this->create();
 				$this->delete();
@@ -97,7 +98,7 @@
 			
 			}catch(Exception $e){
 			
-				$this->_action_msg = ActionMessages::custom_wrong($e->getMessage());
+				$this->_action_msg .= ActionMessages::custom_wrong($e->getMessage());
 			
 			}
 		
@@ -213,7 +214,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::created($result);
+				$this->_action_msg .= ActionMessages::created($result);
 			
 			}
 		
@@ -272,7 +273,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::deleted($result);
+				$this->_action_msg .= ActionMessages::deleted($result);
 			
 			}elseif(VPost::delete() && VPost::category_id() && $this->_user->_permissions->delete){
 			
@@ -323,7 +324,7 @@
 				
 				}
 				
-				$this->_action_msg = ActionMessages::deleted($result);
+				$this->_action_msg .= ActionMessages::deleted($result);
 			
 			}
 		
