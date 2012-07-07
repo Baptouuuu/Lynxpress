@@ -46,7 +46,7 @@
 	
 		const MSG_G_B = '<div class="message good">';
 		const MSG_W_B = '<div class="message wrong">';
-		const MSG_E = '</div>';
+		const MSG_E = '<span class=close>x</span></div>';
 		
 		/**
 			* Generic method that returns wanted message on success action
