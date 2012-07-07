@@ -56,6 +56,90 @@
 				 '</div>';
 		
 		}
+		
+		/**
+			* Display a message to tell the user what he's seeing
+			*
+			* @static
+			* @access	public
+		*/
+		
+		public static function head(){
+		
+			echo '<h2>'.Lang::_('Activity on your network since your last visit', 'network').'</h2>';
+		
+		}
+		
+		/**
+			* Display the structure of websites list
+			*
+			* @static
+			* @access	public
+			* @param	string	[$part]
+		*/
+		
+		public static function websites($part){
+		
+			if($part == 'o')
+				echo '<ul id=network_list>';
+			elseif($part == 'c')
+				echo '</ul>';
+		
+		}
+		
+		/**
+			* Display a website in the list
+			*
+			* @static
+			* @access	public
+			* @param	integer	[$id]
+			* @param	string	[$name]
+			* @param	string	[$url]
+			* @param	integer	[$posts]
+			* @param	integer	[$albums]
+			* @param	integer	[$videos]
+		*/
+		
+		public static function website($id, $name, $url, $posts, $albums, $videos){
+		
+			echo '<li>'.
+					'<div class=name>'.
+						$name.
+					'</div>'.
+					'<div class=links>'.
+						'<div>'.
+							'<a href="'.Url::_(array('ns' => 'network', 'ctl' => 'posts'), array('ws' => $id)).'">'.
+								Lang::_('Posts').
+							'</a>'.
+							'<span class=count>'.
+								$posts.
+							'</span>'.
+						'</div>'.
+						'<div>'.
+							'<a href="'.Url::_(array('ns' => 'network', 'ctl' => 'albums'), array('ws' => $id)).'">'.
+								Lang::_('Album').
+							'</a>'.
+							'<span class=count>'.
+								$albums.
+							'</span>'.
+						'</div>'.
+						'<div>'.
+							'<a href="'.Url::_(array('ns' => 'network', 'ctl' => 'videos'), array('ws' => $id)).'">'.
+								Lang::_('Video').
+							'</a>'.
+							'<span class=count>'.
+								$videos.
+							'</span>'.
+						'</div>'.
+						'<div>'.
+							'<a href="'.$url.'" target=_blank>'.
+								Lang::_('View').
+							'</a>'.
+						'</div>'.
+					'</div>'.
+				 '</li>';
+		
+		}
 	
 	}
 
