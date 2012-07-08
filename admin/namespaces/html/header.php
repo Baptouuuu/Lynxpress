@@ -29,7 +29,13 @@
 
 		<header>
 		
-			<ul id="nav">
+			<button id=toggle>
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+			
+			<ul id=nav>
 				
 				<li>
 					<a href="<?php echo WS_URL ?>" target="_blank"><?php echo WS_NAME ?></a>
@@ -177,7 +183,7 @@
 				
 				?>
 				<li id="logout">
-					<?php echo Lang::_('Hi').' '.$page->_user->_username ?> | 
+					<span><?php echo Lang::_('Hi').' '.$page->_user->_username ?> | </span>
 					<a href="<?php echo Url::_(array('ns' => 'session', 'ctl' => 'logout')) ?>"><?php echo Lang::_('Logout') ?></a>
 				</li>
 			</ul>

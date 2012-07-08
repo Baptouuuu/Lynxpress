@@ -13,6 +13,7 @@
 		<script type="text/javascript" src="<?php echo WS_URL ?>fancybox/jquery.fancybox.js"></script>
 		<script type="text/javascript" src="<?php echo WS_URL ?>fancybox/helpers/jquery.fancybox-buttons.js?v=2.0.3"></script>
 		<script type="text/javascript" src="<?php echo WS_URL ?>js/admin/core/viewModel.messages.js"></script>
+		<script type="text/javascript" src="<?php echo WS_URL ?>js/admin/core/viewModel.toggleMenu.js"></script>
 		
 		<script type="text/javascript">
 			$(document).ready(function() {
