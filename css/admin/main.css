@@ -70,9 +70,13 @@ form select:active{border: 1px solid #aaa; border-bottom-color: #ccc; border-top
 .progress{background: #3e3e3e; border-radius: 3px; box-shadow: inset 0 1px 2px #333; height: 18px; overflow: hidden;}
 	.progress > .bar{background-color: #39f; background-image: linear-gradient(top, #149bdf, #39f); background-image: -webkit-linear-gradient(#149bdf, #39f); background-image: -moz-linear-gradient(90deg, #39f, #149bdf); background-image: -o-linear-gradient(#149bdf, #39f); border-radius: 3px; box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15); height: 18px; transition: width .6s ease; width: 0%; -webkit-transition: width .6s ease; -moz-transition: width .6s ease; -o-transition: width .6s ease;}
 
-body{background-color: whitesmoke; height:100%; padding:0; margin: 0; min-width: 992px; font-family: "Trebuchet MS",Arial,sans-serif;}
+body{background-color: whitesmoke; height:100%; padding:0; margin: 0; /*min-width: 992px;*/ font-family: "Trebuchet MS",Arial,sans-serif;}
 
-	header{background-color: #333; background: -webkit-linear-gradient(#333, #2c2c2c) #333; background: -moz-linear-gradient(90deg, #2c2c2c, #333) #333; background: -o-linear-gradient(#333, #2c2c2c) #333; box-shadow: 0 2px 1px rgba(45, 45, 45, 0.5); color: white; min-width: 1024px; height: 25px; padding: 5px 0 0 10px; position: fixed; top: 0; width: 100%;}
+	header{background-color: #333; background: -webkit-linear-gradient(#333, #2c2c2c) #333; background: -moz-linear-gradient(90deg, #2c2c2c, #333) #333; background: -o-linear-gradient(#333, #2c2c2c) #333; box-shadow: 0 2px 1px rgba(45, 45, 45, 0.5); color: white; height: 25px; padding: 5px 0 0 10px; position: fixed; top: 0; width: 100%;}
+		header > #toggle{background-color: #333; background: -webkit-linear-gradient(#333, #222) #333; background: -moz-linear-gradient(90deg, #222, #333) #333; background: -o-linear-gradient(#333, #222) #333; border: 1px solid; border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); border-radius: 3px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.075); cursor: pointer; display: none; margin: 0 2px 0 0; padding: 5px 7px;}
+		header > #toggle:hover, header > #toggle:active{background: #222;}
+			#toggle > span{background: whitesmoke; border-radius: 1px; box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25); display: block; height: 2px; width: 18px;}
+			#toggle > span + span{margin: 3px 0 0 0;}
 		#nav{height: 25px; margin: 0; padding: 0;}
 			#nav > li{float: left; position: relative;}
 			#nav > li + li{margin: 0 0 0 5px;}
@@ -103,7 +107,7 @@ body{background-color: whitesmoke; height:100%; padding:0; margin: 0; min-width:
 								#nav ul ul > li:first-child > a:after{border-bottom: 8px solid transparent; border-left: 16px solid transparent; border-right: 16px solid transparent; content: ''; height: 0; left: -20px; position: absolute; top: 12px; -moz-transform: rotate(270deg); -webkit-transform: rotate(270deg); width: 0;}
 			#logout{float: right !important; margin-right: 20px !important;}
 	
-	#wrapper{margin: 60px 16px 50px 16px; min-height: 500px; min-width: 992px;}
+	#wrapper{margin: 60px 16px 50px 16px; min-height: 500px; /*min-width: 992px;*/}
 	
 		#login{height: auto; left: 50%; margin: -300px 0 0 -250px; position: absolute; top: 50%; width: 500px;}
 			#login_logo{margin: 0 auto; width: 134px;}
@@ -114,7 +118,7 @@ body{background-color: whitesmoke; height:100%; padding:0; margin: 0; min-width:
 			#login_footer{background-color: #fff; border-radius: 2px; box-shadow: 0 1px 5px lightGrey; font-size: 12px; padding: 20px; text-align: center;}
 				#login_footer > a:hover{text-decoration: underline;}
 		
-		#menu{color: white; font-size: 16px; height: 29px; margin: 30px 0px 15px 0px; text-align: center; width: 100%; }
+		#menu{color: white; font-size: 16px; height: 29px; margin: 30px 0 15px 0; text-align: center; width: 100%; }
 			#menu a{color: white;}
 			.menu_item a{background-color: #333; background: -webkit-linear-gradient(#333, #2c2c2c) #333; background: -moz-linear-gradient(90deg, #2c2c2c, #333) #333; background: -o-linear-gradient(#333, #2c2c2c) #333; border-radius: 3px; box-shadow: 0 1px 1px #fff; margin-right: 10px; padding: 6px 8px; -webkit-transition: all .1s ease-in-out; -moz-transition: all .1s ease-in-out; -o-transition: all .1s ease-in-out;}
 			.menu_item:hover a{background-color: #39f; background: -webkit-linear-gradient(#72b8ff, #39f) #39f; background: -moz-linear-gradient(90deg, #39f, #72b8ff) #39f; background: -o-linear-gradient(#72b8ff, #39f) #39f; box-shadow: inset 0 0 3px #fff;}
@@ -252,8 +256,8 @@ body{background-color: whitesmoke; height:100%; padding:0; margin: 0; min-width:
 							#at_title{font-size: 16px; width: 200px;}
 							#add_title_form > .content > .button{margin: 10px 55px 0 55px; width: 100px;}
 					
-					#add_image_form{height: 600px; margin: -250px 0 0 -250px; width: 500px;}
-					#add_image_form.show{margin: -300px 0 0 -250px;}
+					#add_image_form{height: 600px; margin: -250px 0 0 -251px; width: 502px;}
+					#add_image_form.show{margin: -300px 0 0 -251px;}
 					#add_image_form[data-lang="fr"]{margin-left: -269px; width: 538px;}
 						#add_image_form > .content{height: 548px;}
 							#add_image_form > .content > ul{height: 548px; margin: 0; overflow: auto; padding: 0;}
@@ -276,8 +280,8 @@ body{background-color: whitesmoke; height:100%; padding:0; margin: 0; min-width:
 										#add_image_form > .content > ul > li > .add > a{color: #666; display: block; padding: 44px 8px 43px 8px;}
 										#add_image_form > .content > ul > li > .add:hover > a{color: #333;}
 					
-					#add_video_form{margin: -250px 0 0 -250px; max-height: 600px; width: 500px;}
-					#add_video_form.show{margin: -300px 0 0 -250px;}
+					#add_video_form{margin: -250px 0 0 -251px; max-height: 600px; width: 502px;}
+					#add_video_form.show{margin: -300px 0 0 -251px;}
 					#add_video_form[data-lang="fr"]{margin-left: -268px; width: 537px;}
 						#add_video_form > .content{max-height: 548px;}
 							#add_video_form > .content > ul{margin: 0; height: 548px; overflow: auto; padding: 0;}
@@ -356,9 +360,9 @@ body{background-color: whitesmoke; height:100%; padding:0; margin: 0; min-width:
 			
 			/*media table*/
 						#table .column_file{min-width: 160px;}
-						#table .column_links{width: 450px;}
-							#table .column_links .input{margin: 0 0 5px 0; width: 400px;}
-							#table .column_links .txta{width: 400px;}
+						#table .column_media_links{width: 450px;}
+							#table .column_media_links .input{margin: 0 0 5px 0; width: 400px;}
+							#table .column_media_links .txta{width: 400px;}
 							#table .column_checkbox img{margin: -18px 3px 0 25px; max-height: 80px; max-width: 80px;}
 			
 			/*edit media*/
@@ -656,5 +660,72 @@ body{background-color: whitesmoke; height:100%; padding:0; margin: 0; min-width:
 							#network_videos details > p:empty{margin: 0;}
 						
 							
-							
+@media (max-width: 1024px){
+
+	header{bottom: 0; box-shadow: inset -3px 0 3px rgba(0, 0, 0, 0.6); height: auto; left: 0; overflow: hidden; padding: 5px 7px; width: 40px; -webkit-transition: all .3s ease-in-out; -moz-transition: all .3s ease-in-out; -o-transition: all .3s ease-in-out;}
+	header.opened{overflow: scroll; width: 180px;}
+		header > #toggle{display: block;}
+		header:not(.opened) > #nav{margin: 15px 40px 0 -200px;}
+		#nav{height: auto; margin: 15px 0 0 0; -webkit-transition: all .3s ease-in-out; -moz-transition: all .3s ease-in-out; -o-transition: all .3s ease-in-out;}
+			#nav > li{border-radius: 3px; float: none; position: inherit;}
+			#nav > li + li{margin: 0;}
+				#nav li > a{background-image: none !important; border-radius: 3px !important; color: #ccc; display: block; padding: 4px 6px; -webkit-transition: box-shadow .1s ease-in-out; -moz-transition: box-shadow .1s ease-in-out; -o-transition: box-shadow .1s ease-in-out;}
+				#nav li > a:hover, #nav li > a:active{background-color: #222 !important; box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6); color: #fff;}
+				#nav ul{display: none;}
+			#logout{float: none !important; margin-right: 0 !important;}
+				#logout > :not(a){display: none;}
+	
+	header + #wrapper{margin-left: 65px;}
+	header.opened + #wrapper{margin-left: 205px; margin-right: -130px;}
+	#wrapper{margin: 10px; -webkit-transition: all .3s ease-in-out; -moz-transition: all .3s ease-in-out; -o-transition: all .3s ease-in-out;}
+		
+		#login{margin: 0 auto; position: inherit;}
+		
+		#menu{margin: 15px 0;}
+		
+		/*reset password form*/
+		#reset_form{margin: 0 auto; position: inherit;}
+		
+		/*dashboard*/
+		#dashboard{}
+			#widgets_left{float: none; padding: 0; width: auto;}
+			#widgets_right{float: none; padding: 0; width: auto;}
+		
+		/*media table*/
+		#table{}
+			#table thead .column_media_date{border-radius: 0 4px 0 0;}
+			#table tfoot .column_media_date{border-radius: 0 0 4px 0;}
+			#table .column_media_links{display: none;}
+
+}
+
+@media (max-height: 601px){
+
+	header{bottom: 0; box-shadow: inset -3px 0 3px rgba(0, 0, 0, 0.6); height: auto; left: 0; overflow: hidden; padding: 5px 7px; width: 40px; -webkit-transition: all .3s ease-in-out; -moz-transition: all .3s ease-in-out; -o-transition: all .3s ease-in-out;}
+	header.opened{overflow: scroll; width: 180px;}
+		header > #toggle{display: block;}
+		header:not(.opened) > #nav{margin: 15px 40px 0 -200px;}
+		#nav{height: auto; margin: 15px 0 0 0; -webkit-transition: all .3s ease-in-out; -moz-transition: all .3s ease-in-out; -o-transition: all .3s ease-in-out;}
+			#nav > li{border-radius: 3px; float: none; position: inherit;}
+			#nav > li + li{margin: 0;}
+				#nav li > a{background-image: none !important; border-radius: 3px !important; color: #ccc; display: block; padding: 4px 6px; -webkit-transition: box-shadow .1s ease-in-out; -moz-transition: box-shadow .1s ease-in-out; -o-transition: box-shadow .1s ease-in-out;}
+				#nav li > a:hover, #nav li > a:active{background-color: #222 !important; box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6); color: #fff;}
+				#nav ul{display: none;}
+			#logout{float: none !important; margin-right: 0 !important;}
+				#logout > :not(a){display: none;}
+	
+	header + #wrapper{margin-left: 65px;}
+	header.opened + #wrapper{margin-left: 205px; margin-right: -130px;}
+	#wrapper{margin: 10px; -webkit-transition: all .3s ease-in-out; -moz-transition: all .3s ease-in-out; -o-transition: all .3s ease-in-out;}
+		
+		#login{margin: 0 auto; position: inherit;}
+		
+		#menu{margin: 15px 0;}
+		
+		/*reset password form*/
+		#reset_form{margin: 0 auto; position: inherit;}
+
+}
+
+
 							

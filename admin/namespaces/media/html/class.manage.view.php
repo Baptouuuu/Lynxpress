@@ -133,8 +133,8 @@
 								'<th class="column_checkbox"><input class="check_all" data-select="media_id" type="checkbox" /></th>'.
 								'<th class="column_file">'.Lang::_('File').'</th>'.
 								'<th class="column_user">'.Lang::_('User').'</th>'.
-								'<th class="column_date">'.Lang::_('Date').'</th>'.
-								'<th class="column_links">'.Lang::_('Links').'</th>'.
+								'<th class="column_media_date">'.Lang::_('Date').'</th>'.
+								'<th class="column_media_links">'.Lang::_('Links').'</th>'.
 							'</tr>'.
 						'</thead>'.
 						'<tfoot>'.
@@ -142,8 +142,8 @@
 								'<th class="column_checkbox"><input class="check_all" data-select="media_id" type="checkbox" /></th>'.
 								'<th class="column_file">'.Lang::_('File').'</th>'.
 								'<th class="column_user">'.Lang::_('User').'</th>'.
-								'<th class="column_date">'.Lang::_('Date').'</th>'.
-								'<th class="column_links">'.Lang::_('Links').'</th>'.
+								'<th class="column_media_date">'.Lang::_('Date').'</th>'.
+								'<th class="column_media_links">'.Lang::_('Links').'</th>'.
 							'</tr>'.
 						'</tfoot>'.
 						'<tbody>';
@@ -218,10 +218,10 @@
 					'<td class="column_user">'.
 						'<a href="'.Url::_(array('ns' => 'media'), array('user' => $user->_id)).'">'.$user->_username.'</a>'.
 					'</td>'.
-					'<td class="column_date">'.
+					'<td class="column_media_date">'.
 						date('d/m/Y @ H:i', strtotime($date)).
 					'</td>'.
-					'<td class="column_links">'.
+					'<td class="column_media_links">'.
 						$links.
 					'</td>'.
 				 '</tr>';

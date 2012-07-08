@@ -47,7 +47,7 @@ $(document).ready(function() {
 			var t = event.originalEvent.target,
 				$this = $(this);
 			
-			if(t.className === 'toggle'){
+			if(t.className === 'toggle' || t.parentNode.className === 'toggle'){
 			
 				$this.toggleClass('closed');
 				
