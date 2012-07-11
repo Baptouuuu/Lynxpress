@@ -702,7 +702,7 @@ body{background-color: whitesmoke; height:100%; padding:0; margin: 0; /*min-widt
 @media (max-height: 601px){
 
 	header{bottom: 0; box-shadow: inset -3px 0 3px rgba(0, 0, 0, 0.6); height: auto; left: 0; overflow: hidden; padding: 5px 7px; width: 40px; -webkit-transition: all .3s ease-in-out; -moz-transition: all .3s ease-in-out; -o-transition: all .3s ease-in-out;}
-	header.opened{overflow: scroll; width: 180px;}
+	header.opened{width: 180px;}
 		header > #toggle{display: block;}
 		header:not(.opened) > #nav{margin: 15px 40px 0 -200px;}
 		#nav{height: auto; margin: 15px 0 0 0; -webkit-transition: all .3s ease-in-out; -moz-transition: all .3s ease-in-out; -o-transition: all .3s ease-in-out;}
