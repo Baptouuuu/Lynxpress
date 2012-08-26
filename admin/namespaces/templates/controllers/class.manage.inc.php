@@ -23,8 +23,7 @@
 	*/
 	
 	namespace Admin\Templates\Controllers;
-	use \Admin\Master\Controllers\Controller as Master;
-	use \Admin\Master\Interfaces\Controller;
+	use \Admin\Master\Controllers\Controller;
 	use \Library\Lang\Lang;
 	use \Admin\ActionMessages\ActionMessages;
 	use \Admin\Templates\Html\Manage as Html;
@@ -44,12 +43,12 @@
 		*
 		* @package		Admin
 		* @subpackage	Templates\Controllers
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.0
 		* @final
 	*/
 	
-	final class Manage extends Master implements Controller{
+	final class Manage extends Controller{
 	
 		private $_templates = null;
 		private $_current = null;

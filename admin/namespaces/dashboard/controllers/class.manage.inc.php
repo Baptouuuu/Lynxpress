@@ -23,8 +23,7 @@
 	*/
 	
 	namespace Admin\Dashboard\Controllers;
-	use \Admin\Master\Controllers\Controller as Master;
-	use \Admin\Master\Interfaces\Controller;
+	use \Admin\Master\Controllers\Controller;
 	use \Admin\Dashboard\Html\Manage as Html;
 	use \Admin\ActionMessages\ActionMessages;
 	use Exception;
@@ -43,12 +42,12 @@
 		*
 		* @package		Admin
 		* @subpackage	Dashboard\Controllers
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.0
 		* @final
 	*/
 	
-	final class Manage extends Master implements Controller{
+	final class Manage extends Controller{
 	
 		private $_activity = null;
 		private $_comments = null;

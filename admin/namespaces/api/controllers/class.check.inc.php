@@ -23,7 +23,6 @@
 	*/
 	
 	namespace Admin\Api\Controllers;
-	use \Admin\Master\Interfaces\Controller;
 	
 	defined('FOOTPRINT') or die();
 	
@@ -33,12 +32,12 @@
 		*
 		* @package		Admin
 		* @subpackage	Api\Controllers
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.0
 		* @final
 	*/
 	
-	final class Check extends Master implements Controller{
+	final class Check extends Master{
 	
 		/**
 			* Class constructor

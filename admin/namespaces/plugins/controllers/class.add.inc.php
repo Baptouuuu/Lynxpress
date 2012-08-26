@@ -23,8 +23,7 @@
 	*/
 	
 	namespace Admin\Plugins\Controllers;
-	use \Admin\Master\Controllers\Controller as Master;
-	use \Admin\Master\Interfaces\Controller;
+	use \Admin\Master\Controllers\Controller;
 	use \Library\Lang\Lang;
 	use \Admin\ActionMessages\ActionMessages;
 	use \Admin\Plugins\Html\Add as Html;
@@ -40,12 +39,12 @@
 		*
 		* @package		Admin
 		* @subpackage	Plugins\Controllers
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.0
 		* @final
 	*/
 	
-	final class Add extends Master implements Controller{
+	final class Add extends Controller{
 	
 		/**
 			* Class constructor

@@ -23,7 +23,6 @@
 	*/
 	
 	namespace Admin\Api\Controllers;
-	use \Admin\Master\Interfaces\Controller;
 	use \Library\Variable\Get as VGet;
 	use Exception;
 	use \Library\Model\User;
@@ -51,12 +50,12 @@
 		*
 		* @package		Admin
 		* @subpackage	Api\Controllers
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.0
 		* @final
 	*/
 	
-	final class Videos extends Master implements Controller{
+	final class Videos extends Master{
 	
 		private $_videos = null;
 		private $_since = null;

@@ -23,6 +23,7 @@
 	*/
 	
 	namespace Admin\Api\Controllers;
+	use \Admin\Master\Interfaces\Controller;
 	use \Library\Database\Database;
 	
 	defined('FOOTPRINT') or die();
@@ -32,12 +33,12 @@
 		*
 		* @package		Admin
 		* @subpackage	Api\Controllers
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.0
 		* @abstract
 	*/
 	
-	abstract class Master{
+	abstract class Master implements Controller{
 	
 		protected $_db = null;
 		protected $_display_html = null;

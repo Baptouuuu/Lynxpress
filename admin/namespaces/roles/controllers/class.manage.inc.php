@@ -23,8 +23,7 @@
 	*/
 	
 	namespace Admin\Roles\Controllers;
-	use \Admin\Master\Controllers\Controller as Master;
-	use \Admin\Master\Interfaces\Controller;
+	use \Admin\Master\Controllers\Controller;
 	use \Admin\Roles\Html\Manage as Html;
 	use \Library\Lang\Lang;
 	use Exception;
@@ -49,7 +48,7 @@
 		* @final
 	*/
 	
-	final class Manage extends Master implements Controller{
+	final class Manage extends Controller{
 	
 		private $_roles = null;
 		

@@ -34,7 +34,7 @@
 		*
 		* @package		Admin
 		* @subpackage	Network\Html
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.0
 		* @abstract
 	*/
@@ -93,7 +93,7 @@
 					'<article>'.
 						nl2br($content).
 					'</article>'.
-					'<a class=button href="'.$website.'?ns=posts&id='.$permalink.'" target=_blank>'.
+					'<a class=button href="'.$website.'?ns=posts&ctl=view&id='.$permalink.'" target=_blank>'.
 						Lang::_('View this post on %ws', 'network', array('ws' => $website_title)).
 					'</a>'.
 				 '</section>';

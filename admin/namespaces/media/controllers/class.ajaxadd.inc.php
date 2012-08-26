@@ -23,8 +23,7 @@
 	*/
 	
 	namespace Admin\Media\Controllers;
-	use \Admin\Master\Controllers\Controller as Master;
-	use \Admin\Master\Interfaces\Controller;
+	use \Admin\Master\Controllers\Controller;
 	use Exception;
 	use \Library\Variable\Get as VGet;
 	use \Library\Variable\Post as VPost;
@@ -66,12 +65,12 @@
 		*
 		* @package		Admin
 		* @subpackage	Media\Controllers
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.0
 		* @final
 	*/
 	
-	final class Ajaxadd extends Master implements Controller{
+	final class Ajaxadd extends Controller{
 	
 		private $_response = null;
 		private $_infos = null;
@@ -175,6 +174,7 @@
 						$media->_name = $img->_name;
 						$media->_type = $mime;
 						$media->_user = $this->_user->_id;
+						$media->_category = json_encode(array());
 						$media->_allow_comment = 'closed';
 						$media->_permalink = $path.$name;
 						

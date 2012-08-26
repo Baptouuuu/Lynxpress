@@ -34,7 +34,7 @@
 		*
 		* @package		Admin
 		* @subpackage	Posts\Html
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.0
 		* @abstract
 	*/
@@ -128,7 +128,7 @@
 		
 		public static function preview($permalink){
 		
-			echo '<a class="button" href="'.Url::_(array('ns' => 'posts', 'id' => $permalink), array('preview' => 'true'), true).'" target="_blank">'.Lang::_('Preview').'</a> ';
+			echo '<a class="button" href="'.Url::_(array('ns' => 'posts', 'ctl' => 'view', 'id' => $permalink), array(), true).'" target="_blank">'.Lang::_('Preview').'</a> ';
 		
 		}
 		
@@ -142,7 +142,7 @@
 		
 		public static function view($permalink){
 		
-			echo '<a class="button" href="'.Url::_(array('ns' => 'posts', 'id' => $permalink), array(), true).'" target="_blank">'.Lang::_('View').'</a> ';
+			echo '<a class="button" href="'.Url::_(array('ns' => 'posts', 'ctl' => 'view', 'id' => $permalink), array(), true).'" target="_blank">'.Lang::_('View').'</a> ';
 		
 		}
 		

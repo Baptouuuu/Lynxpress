@@ -23,8 +23,7 @@
 	*/
 	
 	namespace Admin\Network\Controllers;
-	use \Admin\Master\Controllers\Controller as Master;
-	use \Admin\Master\Interfaces\Controller;
+	use \Admin\Master\Controllers\Controller;
 	use \Admin\Network\Html\Videos as Html;
 	use Exception;
 	use \Library\Model\Setting;
@@ -40,12 +39,12 @@
 		*
 		* @package		Admin
 		* @subpackage	Network\Controllers
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.0
 		* @final
 	*/
 	
-	final class Videos extends Master implements Controller{
+	final class Videos extends Controller{
 	
 		private $_setting = null;
 		private $_videos = null;

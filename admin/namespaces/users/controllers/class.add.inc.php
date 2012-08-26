@@ -23,8 +23,7 @@
 	*/
 	
 	namespace Admin\Users\Controllers;
-	use \Admin\Master\Controllers\Controller as Master;
-	use \Admin\Master\Interfaces\Controller;
+	use \Admin\Master\Controllers\Controller;
 	use \Library\Lang\Lang;
 	use \Admin\Users\Html\Add as Html;
 	use \Library\Model\User;
@@ -44,12 +43,12 @@
 		*
 		* @package		Admin
 		* @subpackage	Users\Conttrollers
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.0
 		* @final
 	*/
 	
-	final class Add extends Master implements Controller{
+	final class Add extends Controller{
 	
 		private $_profile = null;
 		private $_roles = null;

@@ -23,6 +23,7 @@
 	*/
 	
 	namespace Admin\Master\Controllers;
+	use \Admin\Master\Interfaces\Controller as IController;
 	use \Library\Database\Database;
 	use \Admin\Session\Session;
 	use \Library\Model\User;
@@ -40,12 +41,12 @@
 		*
 		* @package		Admin
 		* @subpackage	Master\Controllers
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.1
 		* @abstract
 	*/
 	
-	abstract class Controller{
+	abstract class Controller implements IController{
 	
 		protected $_db = null;
 		protected $_action_msg = null;

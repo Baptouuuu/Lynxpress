@@ -35,7 +35,7 @@
 		*
 		* @package		Admin
 		* @subpackage	Media\Html
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.0
 		* @abstract
 	*/
@@ -73,7 +73,7 @@
 		
 			echo '<div id="actions">'.
 				 	'<input class="button" type="submit" name="save" value="'.Lang::_('Save').'" /> '.
-				 	'<a class="button" href="'.Url::_(array('ns' => 'albums', 'id' => $id), array(), true).'" target=_blank>'.Lang::_('View').'</a> '.
+				 	'<a class="button" href="'.Url::_(array('ns' => 'albums', 'ctl' => 'view', 'id' => $id), array(), true).'" target=_blank>'.Lang::_('View').'</a> '.
 				 	parent::clear_localstorage().
 				 	'<input class="button publish" type="submit" '.(($status == 'draft')?'name="publish" value="'.Lang::_('Publish').'"':'name="unpublish" value="'.Lang::_('Unpublish').'"').' />'.
 				 '</div>';
@@ -119,7 +119,7 @@
 				 		'<fieldset>'.
 				 			'<legend>'.Lang::_('Categories').'</legend>';
 				 		
-				 			$cats = explode(',', $a_cat);
+				 			$cats = json_decode($a_cat);
 				 			
 				 			foreach($categories as $c)
 				 				echo '<span class="acat"><input id="cat_'.$c->_id.'" type="checkbox" name="category[]" value="'.$c->_id.'" '.((in_array($c->_id, $cats))?'checked':'').'><label for="cat_'.$c->_id.'">'.$c->_name.'</label></span>';

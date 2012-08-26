@@ -23,8 +23,7 @@
 	*/
 	
 	namespace Admin\Plugins\Controllers;
-	use \Admin\Master\Controllers\Controller as Master;
-	use \Admin\Master\Interfaces\Controller;
+	use \Admin\Master\Controllers\Controller;
 	use \Library\Lang\Lang;
 	use \Admin\Plugins\Html\Manage as Html;
 	use \Admin\ActionMessages\ActionMessages;
@@ -43,12 +42,12 @@
 		*
 		* @package		Admin
 		* @subpackage	Plugins\Controllers
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.0
 		* @final
 	*/
 	
-	final class Manage extends Master implements Controller{
+	final class Manage extends Controller{
 	
 		private $_plugins = null;
 		

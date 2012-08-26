@@ -23,8 +23,7 @@
 	*/
 	
 	namespace Admin\Categories\Controllers;
-	use \Admin\Master\Controllers\Controller as Master;
-	use \Admin\Master\Interfaces\Controller as Controller;
+	use \Admin\Master\Controllers\Controller;
 	use \Library\Lang\Lang as Lang;
 	use \Admin\Categories\Html\Manage as Html;
 	use \Admin\ActionMessages\ActionMessages as ActionMessages;
@@ -45,12 +44,12 @@
 		*
 		* @package		Admin
 		* @subpackage	Categories\Controllers
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.0
 		* @final
 	*/
 	
-	final class Manage extends Master implements Controller{
+	final class Manage extends Controller{
 	
 		private $_categories = null;
 		
@@ -242,7 +241,7 @@
 					$to_read['columns'] = array('_id');
 					$to_read['condition_columns'][':c'] = '_category';
 					$to_read['condition_select_types'][':c'] = 'LIKE';
-					$to_read['condition_values'][':c'] = '%'.$cat->_id.'%';
+					$to_read['condition_values'][':c'] = '%"'.$cat->_id.'"%';
 					$to_read['value_types'][':c'] = 'str';
 					
 					$content = $this->_db->read($to_read);
@@ -291,7 +290,7 @@
 						$to_read['columns'] = array('_id');
 						$to_read['condition_columns'][':c'] = '_category';
 						$to_read['condition_select_types'][':c'] = 'LIKE';
-						$to_read['condition_values'][':c'] = '%'.$cat->_id.'%';
+						$to_read['condition_values'][':c'] = '%"'.$cat->_id.'"%';
 						$to_read['value_types'][':c'] = 'str';
 						
 						$content = $this->_db->read($to_read);

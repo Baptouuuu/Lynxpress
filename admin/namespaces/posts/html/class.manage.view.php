@@ -34,7 +34,7 @@
 		*
 		* @package		Admin
 		* @subpackage	Posts\Html
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.0
 		* @abstract
 	*/
@@ -200,7 +200,7 @@
 			
 				$actions = '<a href="'.Url::_(array('ns' => 'posts', 'ctl' => 'edit'), array('action' => 'update', 'id' => $id)).'">'.Lang::_('Edit').'</a> | ';
 				$actions .= '<a class="red" href="'.Url::_(array('ns' => 'posts'), array('action' => 'trash', 'id' => $id, 'status' => $status)).'">'.Lang::_('Trash').'</a> | ';
-				$actions .= '<a href="'.Url::_(array('ns' => 'posts', 'id' => $permalink), (($status == 'draft')?array('preview' => 'true'):array()), true).'">'.Lang::_('View').'</a>';
+				$actions .= '<a href="'.Url::_(array('ns' => 'posts', 'ctl' => 'view', 'id' => $permalink), array(), true).'">'.Lang::_('View').'</a>';
 			
 			}else{
 			

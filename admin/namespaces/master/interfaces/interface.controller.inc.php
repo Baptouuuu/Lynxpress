@@ -31,13 +31,12 @@
 		*
 		* @package		Admin
 		* @subpackage	Master\Interfaces
-		* @author 		Baptiste Langlade lynxpressorg@gmail.com
+		* @author 		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version 		1.0
 	*/
 
-	Interface Controller{
+	interface Controller{
 		
-		public function __construct();
 		public function display_content();
 
 	}

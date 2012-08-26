@@ -23,8 +23,7 @@
 	*/
 	
 	namespace Admin\Users\Controllers;
-	use \Admin\Master\Controllers\Controller as Master;
-	use \Admin\Master\Interfaces\Controller;
+	use \Admin\Master\Controllers\Controller;
 	use \Library\Lang\Lang;
 	use \Admin\Users\Html\Profile as Html;
 	use Exception;
@@ -42,12 +41,12 @@
 		*
 		* @package		Admin
 		* @subpackage	Users\Controllers
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.0
 		* @final
 	*/
 	
-	final class Profile extends Master implements Controller{
+	final class Profile extends Controller{
 	
 		private $_profile = null;
 		

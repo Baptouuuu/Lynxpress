@@ -23,8 +23,7 @@
 	*/
 	
 	namespace Admin\HomePage\Controllers;
-	use \Admin\Master\Controllers\Controller as Master;
-	use \Admin\Master\Interfaces\Controller;
+	use \Admin\Master\Controllers\Controller;
 	use \Library\Lang\Lang ;
 	use \Admin\HomePage\Html\Manage as Html;
 	use Exception;
@@ -42,12 +41,12 @@
 		*
 		* @package		Admin
 		* @subpackage	HomePage\Controllers
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.0
 		* @final
 	*/
 	
-	final class Manage extends Master implements Controller{
+	final class Manage extends Controller{
 	
 		private $_setting = null;
 		private $_posts = null;
@@ -121,7 +120,7 @@
 			try{
 			
 				$to_read['table'] = 'post';
-				$to_read['columns'] = array('_id', '_title');
+				$to_read['columns'] = array('_title', '_permalink');
 				$to_read['condition_columns'][':s'] = '_status';
 				$to_read['condition_select_types'][':s'] = '=';
 				$to_read['condition_values'][':s'] = 'publish';

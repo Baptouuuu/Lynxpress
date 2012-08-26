@@ -34,7 +34,7 @@
 		*
 		* @package		Admin
 		* @subpackage	HomePage\Html
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.0
 		* @abstract
 	*/
@@ -116,7 +116,7 @@
 				 		
 				 		if(!empty($posts))
 				 			foreach($posts as $p)
-				 				parent::option($p->_id, $p->_title, (($p->_id == $setting->view)?true:false));
+				 				parent::option($p->_permalink, $p->_title, (($p->_permalink == $setting->view)?true:false));
 				 		
 			echo 	'</select>'.
 				 	'<select id="hl_album" name="album" '.(($setting->type == 'album')?'class="selected"':'').' >'.

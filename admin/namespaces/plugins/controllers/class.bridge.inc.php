@@ -23,8 +23,7 @@
 	*/
 	
 	namespace Admin\Plugins\Controllers;
-	use \Admin\Master\Controllers\Controller as Master;
-	use \Admin\Master\Interfaces\Controller;
+	use \Admin\Master\Controllers\Controller;
 	use \Admin\Plugins\Helpers\Plugins;
 	use \Library\Lang\Lang;
 	use \Admin\Plugins\Html\Bridge as Html;
@@ -36,12 +35,12 @@
 		*
 		* @package		Admin
 		* @subpackage	Plugins\Controller
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.0
 		* @final
 	*/
 	
-	final class Bridge extends Master implements Controller{
+	final class Bridge extends Controller{
 	
 		private $_plugins = null;
 		

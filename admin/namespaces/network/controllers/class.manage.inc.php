@@ -23,8 +23,7 @@
 	*/
 	
 	namespace Admin\Network\Controllers;
-	use \Admin\Master\Controllers\Controller as Master;
-	use \Admin\Master\Interfaces\Controller;
+	use \Admin\Master\Controllers\Controller;
 	use \Library\Lang\Lang;
 	use \Admin\Network\Html\Manage as Html;
 	use Exception;
@@ -39,12 +38,12 @@
 		*
 		* @package		Admin
 		* @subpackage	Network\Controllers
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.0
 		* @final
 	*/
 	
-	final class Manage extends Master implements Controller{
+	final class Manage extends Controller{
 	
 		private $_setting = null;
 		private $_sites = array();

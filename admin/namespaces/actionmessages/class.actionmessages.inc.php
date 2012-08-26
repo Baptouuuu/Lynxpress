@@ -37,7 +37,7 @@
 		*
 		* @package		Admin
 		* @namespace	ActionMessages
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.2
 		* @abstract
 	*/

@@ -23,8 +23,7 @@
 	*/
 	
 	namespace Admin\Media\Controllers;
-	use \Admin\Master\Controllers\Controller as Master;
-	use \Admin\Master\Interfaces\Controller;
+	use \Admin\Master\Controllers\Controller;
 	use \Library\Lang\Lang;
 	use \Admin\Media\Html\Manage as Html;
 	use \Admin\ActionMessages\ActionMessages;
@@ -48,12 +47,12 @@
 		*
 		* @package		Admin
 		* @subpackage	Media\Controllers
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.0
 		* @final
 	*/
 	
-	final class Manage extends Master implements Controller{
+	final class Manage extends Controller{
 	
 		private $_medias = null;
 		private $_type = null;
@@ -147,7 +146,7 @@
 						$to_read['condition_types'][':c'] = 'AND';
 						$to_read['condition_columns'][':c'] = '_category';
 						$to_read['condition_select_types'][':c'] = 'LIKE';
-						$to_read['condition_values'][':c'] = '%'.VRequest::category().'%';
+						$to_read['condition_values'][':c'] = '%"'.VRequest::category().'"%';
 						$to_read['value_types'][':c'] = 'str';
 					
 					}

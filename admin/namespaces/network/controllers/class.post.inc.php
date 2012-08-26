@@ -23,8 +23,7 @@
 	*/
 	
 	namespace Admin\Network\Controllers;
-	use \Admin\Master\Controllers\Controller as Master;
-	use \Admin\Master\Interfaces\Controller;
+	use \Admin\Master\Controllers\Controller;
 	use Exception;
 	use \Admin\ActionMessages\ActionMessages;
 	use \Library\Lang\Lang;
@@ -41,12 +40,12 @@
 		*
 		* @package		Admin
 		* @subpackage	Network\Controllers
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.0
 		* @final
 	*/
 	
-	final class Post extends Master implements Controller{
+	final class Post extends Controller{
 	
 		private $_setting = null;
 		private $_post = null;

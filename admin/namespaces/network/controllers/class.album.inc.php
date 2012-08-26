@@ -23,8 +23,7 @@
 	*/
 	
 	namespace Admin\Network\Controllers;
-	use \Admin\Master\Controllers\Controller as Master;
-	use \Admin\Master\Interfaces\Controller;
+	use \Admin\Master\Controllers\Controller;
 	use \Library\Lang\Lang;
 	use \Admin\Network\Html\Album as Html;
 	use \Library\Model\Setting;
@@ -46,7 +45,7 @@
 		* @final
 	*/
 	
-	final class Album extends Master implements Controller{
+	final class Album extends Controller{
 	
 		private $_setting = null;
 		private $_album = null;

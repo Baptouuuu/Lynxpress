@@ -23,8 +23,7 @@
 	*/
 	
 	namespace Admin\Network\Controllers;
-	use \Admin\Master\Controllers\Controller as Master;
-	use \Admin\Master\Interfaces\Controller;
+	use \Admin\Master\Controllers\Controller;
 	use \Library\Lang\Lang;
 	use \Admin\Network\Html\Settings as Html;
 	use \Library\Url\Url;
@@ -42,12 +41,12 @@
 		*
 		* @package		Admin
 		* @subpackage	Network\Controllers
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.0
 		* @final
 	*/
 	
-	final class Settings extends Master implements Controller{
+	final class Settings extends Controller{
 	
 		private $_setting = null;
 		

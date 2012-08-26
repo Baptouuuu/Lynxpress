@@ -23,8 +23,7 @@
 	*/
 	
 	namespace Admin\Links\Controllers;
-	use \Admin\Master\Controllers\Controller as Master;
-	use \Admin\Master\Interfaces\Controller;
+	use \Admin\Master\Controllers\Controller;
 	use \Library\Lang\Lang;
 	use \Admin\Links\Html\Edit as Html;
 	use \Admin\ActionMessages\ActionMessages;
@@ -42,12 +41,12 @@
 		*
 		* @package		Admin
 		* @subpackage	Links\Controllers
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.0
 		* @final
 	*/
 	
-	final class Edit extends Master implements Controller{
+	final class Edit extends Controller{
 	
 		private $_link = null;
 		private $_action = null;
