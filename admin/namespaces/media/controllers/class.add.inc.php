@@ -23,8 +23,7 @@
 	*/
 	
 	namespace Admin\Media\Controllers;
-	use \Admin\Master\Controllers\Controller as Master;
-	use \Admin\Master\Interfaces\Controller;
+	use \Admin\Master\Controllers\Controller;
 	use Exception;
 	use \Library\Lang\Lang;
 	use \Admin\ActionMessages\ActionMessages;
@@ -47,12 +46,12 @@
 		*
 		* @package		Admin
 		* @subpackage	Media\Controllers
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.0
 		* @final
 	*/
 	
-	final class Add extends Master implements Controller{
+	final class Add extends Controller{
 	
 		private $_type = null;
 		private $_categories = null;
@@ -280,6 +279,7 @@
 						$media->_name = $file->_name;
 						$media->_type = $mime;
 						$media->_user = $this->_user->_id;
+						$media->_category = json_encode(array());
 						$media->_allow_comment = 'closed';
 						$media->_permalink = $path.$file->_name;
 						$media->_attach_type = 'none';
@@ -313,7 +313,7 @@
 					$album->_type = 'album';
 					$album->_user = $this->_user->_id;
 					$album->_status = 'draft';
-					$album->_category = implode(',', VPost::category(array()));
+					$album->_category = json_encode(VPost::category(array()));
 					$album->_allow_comment = VPost::allow_comment('closed');
 					$album->_permalink = $path;
 					$album->_description = VPost::description();
@@ -350,6 +350,7 @@
 					$alien->_type = 'alien';
 					$alien->_user = $this->_user->_id;
 					$alien->_status = 'draft';
+					$alien->_category = json_encode(array());
 					$alien->_allow_comment = 'closed';
 					$alien->_permalink = Text::slug($alien->_name);
 					$alien->_embed_code = VPost::embed_code();
@@ -383,6 +384,7 @@
 					$vid->_type = VPost::mime();
 					$vid->_user = $this->_user->_id;
 					$vid->_status = 'publish';
+					$vid->_category = json_encode(array());
 					$vid->_allow_comment = 'closed';
 					$vid->_permalink = VPost::url();
 					$vid->_attach_type = 'none';

@@ -23,8 +23,7 @@
 	*/
 	
 	namespace Admin\Posts\Controllers;
-	use \Admin\Master\Controllers\Controller as Master;
-	use \Admin\Master\Interfaces\Controller;
+	use \Admin\Master\Controllers\Controller;
 	use \Admin\ActionMessages\ActionMessages;
 	use \Admin\Posts\Html\Edit as Html;
 	use Exception;
@@ -52,12 +51,12 @@
 		*
 		* @package		Admin
 		* @subpackage	Posts\Controllers
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.0
 		* @final
 	*/
 	
-	final class Edit extends Master implements Controller{
+	final class Edit extends Controller{
 	
 		private $_post = null;
 		private $_action = null;
@@ -130,6 +129,7 @@
 					$this->_action = 'create';
 					
 					$this->_post->_date = date('Y-m-d H:i:s');
+					$this->_post->_category = '[]';
 					$this->_post->_ouser = new User($this->_user->_id);
 				
 				}
@@ -140,6 +140,7 @@
 				$this->_action = 'create';
 				
 				$this->_post->_date = date('Y-m-d H:i:s');
+				$this->_post->_category = '[]';
 				$this->_post->_ouser = new User($this->_user->_id);
 			
 			}
@@ -341,7 +342,7 @@
 				$this->_post->_status
 			);
 			
-			$categories = explode(',', $this->_post->_category);
+			$categories = json_decode($this->_post->_category, true);
 			
 			if(!empty($this->_categories))
 				foreach($this->_categories as $c)
@@ -444,10 +445,10 @@
 			else
 				$this->_post->_content = VPost::content();
 			
-			if($this->_post->__set('_category', implode(',', VPost::category(array()))) !== true)
-				$errors[] = Lang::_($this->_post->__set('_category', implode(',', VPost::category(array()))), 'posts');
+			if(VPost::category(false) === false)
+				$errors[] = Lang::_($this->_post->__set('_category', false), 'posts');
 			else
-				$this->_post->_category = implode(',', VPost::category());
+				$this->_post->_category = json_encode(VPost::category());
 			
 			if($this->_post->__set('_tags', VPost::tags()) !== true)
 				$errors[] = Lang::_($this->_post->__set('_tags', VPost::tags()), 'posts');

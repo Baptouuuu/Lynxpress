@@ -23,8 +23,7 @@
 	*/
 	
 	namespace Admin\Media\Controllers;
-	use \Admin\Master\Controllers\Controller as Master;
-	use \Admin\Master\Interfaces\Controller;
+	use \Admin\Master\Controllers\Controller;
 	use \Admin\Media\Html\Edit as Html;
 	use \Admin\ActionMessages\ActionMessages;
 	use \Library\Lang\Lang;
@@ -50,7 +49,7 @@
 		* @final
 	*/
 	
-	final class Edit extends Master implements Controller{
+	final class Edit extends Controller{
 	
 		private $_media = null;
 		private $_aliens = null;
@@ -312,7 +311,7 @@
 				
 					$this->_media->_name = VPost::name();
 					$this->_media->_description = VPost::description();
-					$this->_media->_category = implode(',', VPost::category(array()));
+					$this->_media->_category = json_encode(VPost::category(array()));
 					$this->_media->update('_name');
 					$this->_media->update('_description');
 					$this->_media->update('_category');

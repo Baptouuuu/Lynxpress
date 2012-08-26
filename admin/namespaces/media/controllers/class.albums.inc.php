@@ -23,8 +23,7 @@
 	*/
 	
 	namespace Admin\Media\Controllers;
-	use \Admin\Master\Controllers\Controller as Master;
-	use \Admin\Master\Interfaces\Controller;
+	use \Admin\Master\Controllers\Controller;
 	use \Admin\Media\Html\Albums as Html;
 	use \Library\Lang\Lang;
 	use \Admin\ActionMessages\ActionMessages;
@@ -49,12 +48,12 @@
 		*
 		* @package		Admin
 		* @subpackage	Media\Controllers
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.0
 		* @final
 	*/
 	
-	final class Albums extends Master implements Controller{
+	final class Albums extends Controller{
 	
 		private $_albums = null;
 		private $_dates = null;
@@ -153,7 +152,7 @@
 						$u = new User($a->_user);
 						$a->_ouser = $u;
 						
-						$ids = explode(',', $a->_category);
+						$ids = json_decode($a->_category, true);
 						$cats = array();
 						
 						foreach($ids as $i){

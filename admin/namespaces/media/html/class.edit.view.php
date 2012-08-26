@@ -34,7 +34,7 @@
 		*
 		* @package		Admin
 		* @subpackage	Media\Html
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.0
 		* @abstract
 	*/
@@ -131,7 +131,7 @@
 			if(!empty($fallback))
 				$aid = $fallback->_id;
 			
-			$categories = explode(',', $category);
+			$categories = json_decode($category);
 			
 			echo '<section id="edit_video" class="edit_media">'.
 					'<input id="em_name" class=input type="text" name="name" value="'.$name.'" placeholder="'.Lang::_('Title').'" required x-webkit-speech />'.

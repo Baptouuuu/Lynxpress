@@ -23,8 +23,7 @@
 	*/
 	
 	namespace Admin\Media\Controllers;
-	use \Admin\Master\Controllers\Controller as Master;
-	use \Admin\Master\Interfaces\Controller;
+	use \Admin\Master\Controllers\Controller;
 	use \Admin\ActionMessages\ActionMessages;
 	use Exception;
 	use \Library\Model\Media;
@@ -49,12 +48,12 @@
 		*
 		* @package		Admin
 		* @subpackage	Media\Controllers
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.0
 		* @final
 	*/
 	
-	final class EditAlbum extends Master implements Controller{
+	final class EditAlbum extends Controller{
 	
 		private $_album = null;
 		private $_pictures = null;
@@ -412,6 +411,7 @@
 						$media->_name = $file->_name;
 						$media->_type = $mime;
 						$media->_user = $this->_user->_id;
+						$media->_category = json_encode(array());
 						$media->_allow_comment = 'closed';
 						$media->_permalink = $path.$file->_name;
 						$media->_status = 'draft';
@@ -453,7 +453,7 @@
 					$this->_album->_name = VPost::name();
 					$this->_album->_description = VPost::description();
 					$this->_album->_allow_comment = VPost::allow_comment('closed');
-					$this->_album->_category = implode(',', VPost::category(array()));
+					$this->_album->_category = json_encode(VPost::category(array()));
 					
 					$this->_album->update('_name');
 					$this->_album->update('_description');
