@@ -228,7 +228,7 @@
 			echo '<input id="pf_title" class=input type="text" name="title" value="'.$title.'" placeholder="'.Lang::_('Title').'" required x-webkit-speech /><br/>';
 			
 			if($display_permalink === true)
-				echo 'Permalink: <a class="button" href="'.Url::_(array('ns' => 'posts', 'id' => $permalink), (($status == 'draft')?array('preview' => 'true'):array()), true).'">'.Url::_(array('ns' => 'posts', 'id' => $permalink), array(), true).'</a>';
+				echo 'Permalink: <a class="button" href="'.Url::_(array('ns' => 'posts', 'ctl' => 'view', 'id' => $permalink), (($status == 'draft')?array('preview' => 'true'):array()), true).'">'.Url::_(array('ns' => 'posts', 'ctl' => 'view', 'id' => $permalink), array(), true).'</a>';
 			
 			echo '<div class="txta_actions" data-id="pf_content">'.
 					'<button class="button" data-form="add_link_form">'.Lang::_('Add Link').'</button>'.
