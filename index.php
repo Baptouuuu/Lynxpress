@@ -22,20 +22,60 @@
 		*   along with Lynxpress.  If not, see http://www.gnu.org/licenses/.
 	*/
 	
+	use \Library\Variable\Get;
+	use \Site\Master\Helpers\Cache;
+	use \Site\Master\Helpers\Session;
+	use \Site\Install\Helpers\Database;
+	
 	define('PATH', '');
 	define('SIDE', 'site');
 	define('FOOTPRINT', true);
 	
 	try{
 	
-		require_once PATH.'config.php';
 		require_once PATH.'library/loader/class.loader.lib.php';
 		
 		\Library\Loader\Loader::load();
+		
+		if(!file_exists(PATH.'config.php') || !Database::installed()){
+		
+			header('Location: install.php');
+			exit();
+		
+		}
+		
+		require_once PATH.'config.php';
+		
+		$controller = '\\Site\\'.ucfirst(Get::ns('homepage')).'\\Controllers\\'.ucfirst(Get::ctl('home'));
+		
+		Session::init();
+		Cache::init($controller::cacheable());
+		
+		if(Cache::exist() === false){
+		
+			Cache::build('s');
+			
+			$page = new $controller();
+			
+			if($page->_display_html === true)
+				require_once $page->_header;
+			
+			$page->display_content();
+			
+			if($page->_display_html === true)
+				require_once $page->_footer;
+				
+			Cache::build('e');
+		
+		}else{
+		
+			Cache::display();
+		
+		}
 	
 	}catch(Exception $e){
 	
-		echo $e->getMessage();
+		\Site\Master\Helpers\Document::e404($e->getMessage(), __FILE__, __LINE__);
 	
 	}
 
