@@ -577,7 +577,7 @@ $(document).ready(function() {
 			
 			event.preventDefault();
 			
-			html = '<a href="'+$this.data('full')+'" rel="fancybox"><img src="'+$this.data('link')+'" alt="'+$this.data('name')+' | '+$this.data('description')+'" /></a>';
+			html = '<a href="'+$this.data('full')+'" data-rel=lightbox rel=post><img src="'+$this.data('link')+'" alt="'+$this.data('name')+' | '+$this.data('description')+'" /></a>';
 			
 			ViewModels.storage.content.text(ViewModels.storage.content.text()+html);
 			ViewModels.storage.content.change();
