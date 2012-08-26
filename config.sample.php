@@ -35,12 +35,13 @@
 	define('DB_NAME', '');
 	define('DB_USER', '');
 	define('DB_PWD', '');
-	define('DB_PREFIX', 'dev_');
+	define('DB_PREFIX', '');
 
-	define('SALT', 'ZjU4MmZiNGM5NGU0ODU5MzQyY2RlMDM0ZWY4ZmFjOGQ=');		//after installation, don't change this constant
+	define('SALT', 'I@mYour5ecretKey!');		//after installation, don't change this constant
 
 	define('WS_VERSION', '2.0');
 	
 	define('URL_REWRITING', true);
+	define('ALLOW_CACHE', true);
 
 ?>
