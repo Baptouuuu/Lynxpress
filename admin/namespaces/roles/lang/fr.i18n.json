@@ -1,0 +1,6 @@
+{
+	"Role \"%role\" do not exist":"Rôle \"%role\" n'existe pas",
+	"Role name has to be one word":"Le rôle doit contenir un seul mot",
+	"Role name already taken":"Rôle déjà utilisé",
+	"Can't delete role, users are using it":"Impossible de supprimer le rôle, des utilisateurs l'utilisent"
+}

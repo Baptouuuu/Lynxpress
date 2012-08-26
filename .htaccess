@@ -1,0 +1,14 @@
+ErrorDocument 404	404.php
+
+<Files config.php>
+	Order allow,Deny
+	Deny from all
+</Files>
+
+RewriteEngine on
+
+Options +FollowSymlinks
+
+RewriteRule ^([a-zA-Z0-9]+)\/([a-zA-Z0-9]+)\/([a-zA-Z0-9\-]+)$ index.php?ns=$1&ctl=$2&id=$3&%{QUERY_STRING} [L]
+RewriteRule ^([a-zA-Z0-9]+)\/([a-zA-Z0-9]+)$ index.php?ns=$1&ctl=$2&%{QUERY_STRING} [L]
+RewriteRule ^([a-zA-Z0-9]+)$ index.php?ns=$1&ctl=home&%{QUERY_STRING} [L]

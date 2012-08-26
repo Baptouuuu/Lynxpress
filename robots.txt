@@ -1,0 +1,12 @@
+User-agent: *
+Disallow: admin/
+Disallow: cache/
+Disallow: namespaces/
+Disallow: css/
+Disallow: fancybox/
+Disallow: images/
+Disallow: js/
+Disallow: photoswipe/
+Disallow: templates/
+Disallow: library/
+Allow: content/

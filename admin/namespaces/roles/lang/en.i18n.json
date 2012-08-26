@@ -1,0 +1,6 @@
+{
+	"Role \"%role\" do not exist":"",
+	"Role name has to be one word":"",
+	"Role name already taken":"",
+	"Can't delete role, users are using it":""
+}

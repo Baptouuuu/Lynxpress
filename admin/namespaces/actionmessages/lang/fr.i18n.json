@@ -1,0 +1,19 @@
+{
+	"Item(s) deleted":"Element(s) supprimé(s)",
+	"Item(s) not deleted!":"Element(s) non supprimé(s)!",
+	"Item added":"Element ajouté",
+	"Item not added!":"Element non ajouté!",
+	"Item(s) updated":"Element(s) mis à jour",
+	"Item(s) not updated!":"Element(s) non mis à jour!",
+	"Check your informations":"Vérifier vos informations",
+	"You can't manage this part!":"Vous ne pouvez pas gérer cette section!",
+	"You don't have permission to do this action!":"Vous n'avez pas les droits pour faire cette action!",
+	"Profile updated":"Profil mis à jour",
+	"Profile not updated!":"Profil non mis à jour!",
+	"Item(s) trashed":"Element(s) mis à la corbeille",
+	"Item(s) not trashed":"Element(s) non mis à la corbeille!",
+	"Item(s) restored":"Element(s) restauré(s)",
+	"Item(s) not restored!":"Element(s) non restauré(s)!",
+	"System update available.":"Mise à jour système disponible.",
+	"No update available!":"Aucune mise à jour disponible!"
+}

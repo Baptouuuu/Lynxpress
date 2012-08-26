@@ -1,0 +1,6 @@
+RewriteEngine on
+
+Options +FollowSymlinks
+
+RewriteRule ^([a-zA-Z0-9]+)\/([a-zA-Z0-9]+)$ index.php?ns=$1&ctl=$2&%{QUERY_STRING} [L]
+RewriteRule ^([a-zA-Z0-9]+)$ index.php?ns=$1&ctl=manage&%{QUERY_STRING} [L]

@@ -1,0 +1,13 @@
+{
+	"No plugins installed! You can find some %here":"Aucun plugin installé! Vous pouvez en trouver %here",
+	"Add Plugin":"Ajouter un Plugin",
+	"Add a plugin to your website":"Ajouter un plugin à votre site",
+	"Upload a plugin archive":"Uploader une archive de plugin",
+	"Plugin archive not found":"Archive du plugin non trouvé",
+	"Plugin manifest invalid":"Manifest du plugin invalide",
+	"Another plugin use the same namespace":"Un autre plugin utilise le même namespace",
+	"Official plugins library":"Librairie officielle de plugins",
+	"Downloaded":"Téléchargés",
+	"No plugins found in the library":"Aucun plugin trouvé dans la libraririe",
+	"Upload a plugin archive":"Uploader une archive de plugin"
+}

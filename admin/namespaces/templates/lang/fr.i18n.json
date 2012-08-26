@@ -1,0 +1,15 @@
+{
+	"You're currently using":"Vous utilisez actuellemnt",
+	"The template \"%tpl\" is in use":"Le template \"%tpl\" est utilisé",
+	"Default template can't be deleted":"Le template par défaut ne peut pas être supprimer",
+	"Add Template":"Ajouter un Template",
+	"Add a template to your website":"Ajouter un template à votre site",
+	"Template archive not found":"Archive du template non trouvé",
+	"Template manifest invalid":"Manifest du template invalide",
+	"Template not compatible with your Lynxpress version":"Template incompatible avec votre version de Lynxpress",
+	"Template already exist":"Template déjà existant",
+	"Official templates library":"Librairie officielle de templates",
+	"Downloaded":"Téléchargés",
+	"No templates found in the library":"Aucun template trouvé dans la librairie",
+	"Upload a template archive":"Uploader une archive de template"
+}
