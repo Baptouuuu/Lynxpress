@@ -23,7 +23,6 @@
 	*/
 	
 	namespace Admin\Api\Controllers;
-	use \Admin\Master\Interfaces\Controller;
 	use \Library\Variable\Get as VGet;
 	use Exception;
 	use \Library\Variable\Post as VPost;
@@ -56,12 +55,12 @@
 		*
 		* @package		Admin
 		* @subpackage	Api\Controllers
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.0
 		* @final
 	*/
 	
-	final class Comments extends Master implements Controller{
+	final class Comments extends Master{
 	
 		private $_comments = null;
 		
@@ -185,6 +184,9 @@
 			
 				if(!VPost::name() && !VPost::email() && !VPost::content() && !VPost::id() && !VPost::type())
 					throw new Exception('Invalid request');
+				
+				if(!preg_match("/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/" , VPost::email()))
+					throw new Exception('Invalid email');
 				
 				$c = new Comment();
 				$c->_name = VPost::name();
