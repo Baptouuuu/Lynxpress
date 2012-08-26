@@ -23,8 +23,7 @@
 	*/
 	
 	namespace Admin\Comments\Controllers;
-	use \Admin\Master\Controllers\Controller as Master;
-	use \Admin\Master\Interfaces\Controller;
+	use \Admin\Master\Controllers\Controller;
 	use \Admin\ActionMessages\ActionMessages;
 	use \Library\Lang\Lang;
 	use \Admin\Comments\Html\Manage as Html;
@@ -48,12 +47,12 @@
 		*
 		* @package		Admin
 		* @subpackage	Comments\Controllers
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.0
 		* @final
 	*/
 	
-	final class Manage extends Master implements Controller{
+	final class Manage extends Controller{
 	
 		private $_comments = null;
 		private $_status = null;
@@ -170,7 +169,7 @@
 							$rel->_id = $p->_id;
 							$rel->_type = $type;
 							$rel->_name = $p->_title;
-							$rel->_permalink = Url::_(array('ns' => 'post', 'id' => $p->_permalink), array(), true);
+							$rel->_permalink = Url::_(array('ns' => 'posts', 'ctl' => 'view', 'id' => $p->_permalink), array(), true);
 							
 							$c->_rel = $rel;
 						
@@ -184,7 +183,7 @@
 							$rel->_id = $a->_id;
 							$rel->_type = $type;
 							$rel->_name = $a->_name;
-							$rel->_permalink = Url::_(array('ns' => 'albums', 'id' => $a->_id), array(), true);
+							$rel->_permalink = Url::_(array('ns' => 'albums', 'ctl' => 'view', 'id' => $a->_id), array(), true);
 							
 							$c->_rel = $rel;
 						
