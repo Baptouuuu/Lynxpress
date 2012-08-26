@@ -36,7 +36,7 @@
 		*
 		* @package		Library
 		* @subpackage	Loader
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.1
 		* @abstract
 	*/
@@ -77,7 +77,12 @@
 			
 			}elseif($namespaces[0] == 'template'){
 			
-				$require = PATH.'template/'.$namespaces[1].'/class.'.$namespaces[2].'view.php';
+				$require = PATH.'templates/'.$namespaces[1].'/';
+				
+				if($namespaces[2] == 'main')
+					$require .= 'class.main.inc.php';
+				else
+					$require .= 'html/'.$namespaces[2].'/class.'.$namespaces[3].'.view.php';
 						
 			}else{
 
@@ -122,7 +127,7 @@
 			require_once $require;
 			
 			if(!class_exists($class) && !interface_exists($class))
-				throw new Exception('Controller "'.$class.'" doesn\'t exists');
+				throw new Exception('Class "'.$class.'" doesn\'t exists');
 		
 		}
 		
