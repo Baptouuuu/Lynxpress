@@ -56,7 +56,7 @@
 		*
 		* @package		Library
 		* @subpackage	Media
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.1.1
 	*/
 	

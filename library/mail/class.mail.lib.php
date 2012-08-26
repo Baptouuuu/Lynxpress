@@ -46,7 +46,7 @@
 		*
 		* @package		Library
 		* @subpackage	Mail
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.0
 	*/
 	
