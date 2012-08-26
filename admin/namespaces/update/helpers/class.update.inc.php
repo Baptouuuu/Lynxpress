@@ -29,6 +29,7 @@
 	use \Admin\Activity\Helpers\Activity;
 	use \Library\Lang\Lang;
 	use \Library\Database\Backup;
+	use \Library\File\Folder;
 	
 	defined('FOOTPRINT') or die();
 	
@@ -282,6 +283,9 @@
 			$config->save();
 			
 			Activity::log('updated the website to the version "'.$manifest->version.'"');
+			
+			$folder = new Folder('tmp/');
+			$folder->delete(true);
 		
 		}
 		
