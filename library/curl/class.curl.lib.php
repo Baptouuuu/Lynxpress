@@ -47,7 +47,7 @@
 		*
 		* @package		Library
 		* @subpackage	Curl
-		* @author		Baptiste Langlade lynxpressorg@gmail.com
+		* @author		Baptiste Langlade <lynxpressorg@gmail.com>
 		* @version		1.1
 	*/
 	
@@ -59,6 +59,7 @@
 		private $_content = null;
 		private $_post = null;
 		private $_data = array();
+		private $_http_code = null;
 		
 		/**
 			* Class Constructor
@@ -111,6 +112,8 @@
 			}
 			
 			$this->_content = curl_exec($this->_c);
+			
+			$this->_http_code = curl_getinfo($this->_c, CURLINFO_HTTP_CODE);
 			
 			if($this->_content === false)
 				throw new Exception('Error trying to connect to "'.$this->_url.'" (Error: "'.curl_error($this->_c).'")');
