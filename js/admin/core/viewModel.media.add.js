@@ -283,7 +283,7 @@ $(document).ready(function() {
 					
 						file.uploaded = true;
 						
-						menu.after(((resp.message)?resp.message:'A server error occured'));
+						menu.after(((resp.message)?resp.message:'<div class="message wrong">A server error occured</div>'));
 						file.element.remove();
 						ViewModels.messages.recheck();
 					
