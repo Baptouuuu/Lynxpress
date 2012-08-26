@@ -1,11 +1,17 @@
-## Work In Progress
+## Lynxpress ##
 
-This project is still in development, use it at your own risks. Only the admin side is currently developped.
+This is a brand new cms written in php, trying to follow one word minimalism.
 
-## Installation
+Lynxpress has been designed to make easy whoever wants to share its life on the web.
 
-Fill the constants values in the config.sample.php file and rename it in config.php
-Create your database and import the file database.sql and you should be ready to go
+Lynxpress is licenced under the GNU GPL V3 (http://www.gnu.org/licenses/gpl.html)
+
+For more informations go to: http://lynxpress.org
+
+## Requirements ##
+
+* PHP 5.3.3+
+* MySQL 5.0+
 
 ## Libraries
 
@@ -14,7 +20,5 @@ Lynxpress is built using others softwares as:
 - Fancybox
 - Photoswipe
 
-## Admin login
-
-Username: Admin
-Password: admin
+Source:
+login form: inspiration from the work of Alexandre Deschamps (http://pixelsdaily.com/resources/photoshop/psds/minimal-login-user-interface/)
