@@ -144,7 +144,7 @@
 		
 		public static function no_activity(){
 		
-			echo '<li>'.Lang::_('No acitivty', 'dashboard').'</li>';
+			echo '<li>'.Lang::_('No activity', 'dashboard').'</li>';
 		
 		}
 		
