@@ -212,7 +212,7 @@
 					`_data` tinytext NOT NULL,
 					`_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
 					KEY `idx_user_id` (`user_id`),
-					CONSTRAINT `dev_activity_ibfk_'.time().'` FOREIGN KEY (`user_id`) REFERENCES `'.$prefix.'user` (`_id`) ON DELETE CASCADE
+					CONSTRAINT `'.$prefix.'activity_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `'.$prefix.'user` (`_id`) ON DELETE CASCADE
 				) ENGINE=InnoDB DEFAULT CHARSET=utf8;';
 				
 				$result = self::$_db->query($sql);
@@ -361,7 +361,7 @@
 					`_extra` text COMMENT \'data formatted in json\',
 					PRIMARY KEY (`_id`),
 					KEY `idx_user_id` (`_user`),
-					CONSTRAINT `dev_media_ibfk_'.time().'` FOREIGN KEY (`_user`) REFERENCES `'.$prefix.'user` (`_id`) ON DELETE CASCADE
+					CONSTRAINT `'.$prefix.'media_ibfk_1` FOREIGN KEY (`_user`) REFERENCES `'.$prefix.'user` (`_id`) ON DELETE CASCADE
 				) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;';
 				
 				$result = self::$_db->query($sql);
@@ -405,7 +405,7 @@
 					`_extra` text COMMENT \'data formatted in json\',
 					PRIMARY KEY (`_id`),
 					KEY `idx_user_id` (`_user`),
-					CONSTRAINT `dev_post_ibfk_'.time().'` FOREIGN KEY (`_user`) REFERENCES `'.$prefix.'user` (`_id`) ON DELETE CASCADE
+					CONSTRAINT `'.$prefix.'post_ibfk_1` FOREIGN KEY (`_user`) REFERENCES `'.$prefix.'user` (`_id`) ON DELETE CASCADE
 				) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;';
 				
 				$result = self::$_db->query($sql);
@@ -441,7 +441,7 @@
 					`_ip` text NOT NULL,
 					PRIMARY KEY (`_id`),
 					KEY `idx_user_id` (`_user`),
-					CONSTRAINT `dev_session_ibfk_'.time().'` FOREIGN KEY (`_user`) REFERENCES `'.$prefix.'user` (`_id`) ON DELETE CASCADE
+					CONSTRAINT `'.$prefix.'session_ibfk_1` FOREIGN KEY (`_user`) REFERENCES `'.$prefix.'user` (`_id`) ON DELETE CASCADE
 				) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;';
 				
 				$result = self::$_db->query($sql);
