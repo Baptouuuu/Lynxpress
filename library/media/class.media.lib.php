@@ -139,7 +139,7 @@
 				if(substr($_FILES[$name]['type'], 0, 5) == 'image'){
 				
 					$this->_file = $_FILES[$name]['tmp_name'];
-					$this->_mime = $_FILES[$name]['type'];
+					$this->_mime = mime_content_type($this->_file);
 					$this->_name = $_FILES[$name]['name'];
 					$attr = getimagesize($this->_file);
 					$this->_width = $attr[0];
